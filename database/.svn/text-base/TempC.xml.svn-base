@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="line[1].powerMean">0.0</entry>
+<entry key="line[1].radioStart">false</entry>
+<entry key="size">3</entry>
+<entry key="line[2].functionName">read</entry>
+<entry key="line[2].timeVariance">3.72413793103353E-11</entry>
+<entry key="line[2].energyVariance">3.1298527899686E-9</entry>
+<entry key="line[2].powerVariance">0.0</entry>
+<entry key="line[1].led2On">true</entry>
+<entry key="line[2].radioStop">false</entry>
+<entry key="line[1].powerVariance">0.0</entry>
+<entry key="line[2].energyMean">0.0012718545</entry>
+<entry key="line[2].petriNet"/>
+<entry key="line[1].timeMean">0.0</entry>
+<entry key="line[1].led1On">true</entry>
+<entry key="line[2].eventRelated">[1]</entry>
+<entry key="line[2].moduleName">TempC</entry>
+<entry key="line[1].energyVariance">0.0</entry>
+<entry key="line[1].led0On">true</entry>
+<entry key="line[2].interfaceName">Read</entry>
+<entry key="line[2].powerMean">0.0</entry>
+<entry key="line[1].radioOn">true</entry>
+<entry key="line[1].interfaceName">Read</entry>
+<entry key="line[1].functionName">readDone</entry>
+<entry key="line[1].energyMean">0.0</entry>
+<entry key="line[1].timeVariance">0.0</entry>
+<entry key="line[2].led2On">true</entry>
+<entry key="line[1].moduleName">TempC</entry>
+<entry key="line[2].radioOn">true</entry>
+<entry key="line[2].radioStart">false</entry>
+<entry key="line[1].radioStop">false</entry>
+<entry key="line[2].timeMean">0.010182</entry>
+<entry key="line[2].led1On">true</entry>
+<entry key="line[1].eventRelated">[]</entry>
+<entry key="line[1].petriNet"/>
+<entry key="line[2].led0On">true</entry>
+</properties>

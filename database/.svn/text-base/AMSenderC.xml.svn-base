@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="line[1].powerVariance">0.0</entry>
+<entry key="line[1].energyVariance">3.63673082017666E-8</entry>
+<entry key="line[2].petriNet"/>
+<entry key="line[1].led1On">true</entry>
+<entry key="line[1].radioStop">false</entry>
+<entry key="line[2].led2On">true</entry>
+<entry key="line[1].energyMean">5.34E-4</entry>
+<entry key="line[1].functionName">send</entry>
+<entry key="line[2].radioStop">false</entry>
+<entry key="line[1].moduleName">AMSenderC</entry>
+<entry key="line[2].powerVariance">0.0</entry>
+<entry key="line[2].energyMean">0.0</entry>
+<entry key="line[2].moduleName">AMSenderC</entry>
+<entry key="line[1].timeMean">0.0075506667</entry>
+<entry key="line[2].radioOn">true</entry>
+<entry key="line[1].led0On">true</entry>
+<entry key="line[1].radioOn">false</entry>
+<entry key="line[2].led1On">true</entry>
+<entry key="line[1].interfaceName">AMSend</entry>
+<entry key="line[2].eventRelated">[]</entry>
+<entry key="size">3</entry>
+<entry key="line[1].led2On">true</entry>
+<entry key="line[2].energyVariance">0.0</entry>
+<entry key="line[2].timeMean">0.0</entry>
+<entry key="line[1].radioStart">false</entry>
+<entry key="line[1].powerMean">0.0</entry>
+<entry key="line[2].functionName">sendDone</entry>
+<entry key="line[1].petriNet"/>
+<entry key="line[2].interfaceName">AMSend</entry>
+<entry key="line[2].radioStart">false</entry>
+<entry key="line[1].timeVariance">7.4548891954023E-6</entry>
+<entry key="line[2].timeVariance">0.0</entry>
+<entry key="line[1].eventRelated">[2]</entry>
+<entry key="line[2].powerMean">0.0</entry>
+<entry key="line[2].led0On">true</entry>
+</properties>

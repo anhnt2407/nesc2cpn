@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="line[15].interfaceName"/>
+<entry key="line[15].powerMean">0.0</entry>
+<entry key="line[15].led1On">true</entry>
+<entry key="line[15].radioStart">false</entry>
+<entry key="line[15].powerError">0.0</entry>
+<entry key="line[15].energyMean">0.18296583921484</entry>
+<entry key="line[15].timeVariance">3.052175562304339E-4</entry>
+<entry key="line[15].moduleName">ExampleM</entry>
+<entry key="line[15].timeMean">2.6567044553001</entry>
+<entry key="line[15].eventRelated">[]</entry>
+<entry key="line[15].radioStop">false</entry>
+<entry key="line[15].powerVariance">0.0</entry>
+<entry key="size">16</entry>
+<entry key="line[15].radioOn">true</entry>
+<entry key="line[15].led0On">true</entry>
+<entry key="line[15].functionName">modelagem</entry>
+<entry key="line[15].led2On">true</entry>
+<entry key="line[15].petriNet"/>
+<entry key="line[15].energyVariance">3.298347353100215E-4</entry>
+<entry key="line[15].timeError">0.0</entry>
+<entry key="line[15].energyError">0.0</entry>
+</properties>
