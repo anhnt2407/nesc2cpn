@@ -1,5 +1,6 @@
 package br.cin.ufpe.nesc2cpn.param;
 
+import br.cin.ufpe.nesc2cpn.Nesc2CpnProperties;
 import br.cin.ufpe.nesc2cpn.repository.file.DatabaseUtil;
 import java.util.Arrays;
 
@@ -17,7 +18,7 @@ public class OutputCheck extends AbstractCheckParameter
     }
 
     @Override
-    public int execute(String[] args) throws Exception
+    public int execute( String[] args , Nesc2CpnProperties properties ) throws Exception
     {
         if( args.length == 0 )
         {
@@ -27,7 +28,9 @@ public class OutputCheck extends AbstractCheckParameter
             throw new Exception( error );
         }
 
-        System.getProperties().setProperty( "nesc2cpn.output" , args[ 0 ] );
+        properties.setOutputDir( args[ 0 ] );
+        
+        //System.getProperties().setProperty( "nesc2cpn.output" , args[ 0 ] );
         System.setProperty( DatabaseUtil.DB_PREFER , args[ 0 ] );
 
         return 1;

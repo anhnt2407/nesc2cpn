@@ -1,6 +1,6 @@
 package br.cin.ufpe.nesc2cpn.param;
 
-import br.cin.ufpe.nesc2cpn.Nesc2CpnMain;
+import br.cin.ufpe.nesc2cpn.Nesc2CpnProperties;
 
 /**
  *
@@ -15,10 +15,9 @@ public class OnlyCreatorCheck extends AbstractCheckParameter
     }
 
     @Override
-    public int execute(String[] arg) throws Exception
+    public int execute( String[] arg , Nesc2CpnProperties properties ) throws Exception
     {
-        Nesc2CpnMain.ONLY_CREATE_MODEL = true;
-        
+        properties.setOnlyCreateModel( true );
         return 0;
     }
 

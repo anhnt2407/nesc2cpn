@@ -1,6 +1,5 @@
 package br.cin.ufpe.nesc2cpn.translator.nodeCreator;
 
-import br.cin.ufpe.nesc2cpn.nescModule.creator.CreatorFactory;
 import br.cin.ufpe.nesc2cpn.nescModule.instructions.Instruction;
 import br.cin.ufpe.nesc2cpn.translator.node.ComposedNode;
 import br.cin.ufpe.nesc2cpn.translator.node.TranslatorNode;
@@ -13,14 +12,19 @@ import java.util.List;
  */
 public class NodeCreatorFactory
 {
-    private static NodeCreatorFactory instance;
-    public static boolean COMPRESS = false;
-
     private List<NodeCreator> creatorList;
-
+    public boolean reduction;
+    
     private NodeCreatorFactory()
     {
         init();
+        this.reduction = false;
+    }
+    
+    private NodeCreatorFactory(boolean reduction)
+    {
+        init();
+        this.reduction = reduction;
     }
 
     private void init()
@@ -34,28 +38,18 @@ public class NodeCreatorFactory
         creatorList.add( new DecrementalNodeCreator() );
         creatorList.add( new IncrementalNodeCreator() );
 
-        creatorList.add( new ForNodeCreator() );
-        creatorList.add( new WhileNodeCreator() );
-        creatorList.add( new DoWhileNodeCreator() );
-        creatorList.add( new IfElseNodeCreator() );
-        creatorList.add( new SwitchNodeCreator() );
+        creatorList.add( new ForNodeCreator( reduction ) );
+        creatorList.add( new WhileNodeCreator( reduction ) );
+        creatorList.add( new DoWhileNodeCreator( reduction ) );
+        creatorList.add( new IfElseNodeCreator( reduction ) );
+        creatorList.add( new SwitchNodeCreator( reduction ) );
 
-        creatorList.add( new OperationNodeCreator() );
+        creatorList.add( new OperationNodeCreator( reduction ) );
         creatorList.add( new ValueNodeCreator() );
 
         creatorList.add( new CastNodeCreator() );
         creatorList.add( new ParenteseNodeCreator() );
-        creatorList.add( new FunctionNodeCreator() );
-    }
-
-    private static NodeCreatorFactory getInstance()
-    {
-        if( instance == null )
-        {
-            instance = new NodeCreatorFactory();
-        }
-
-        return instance;
+        creatorList.add( new FunctionNodeCreator( reduction ) );
     }
 
     public TranslatorNode convert(Instruction inst) throws Exception
@@ -66,7 +60,7 @@ public class NodeCreatorFactory
             {
                 TranslatorNode node = creator.convertTo( inst );
 
-                if( COMPRESS && !(creator instanceof ComposedNodeCreator) )
+                if( reduction && !(creator instanceof ComposedNodeCreator) )
                 {
                     return group( node );
                 }
@@ -151,34 +145,20 @@ public class NodeCreatorFactory
 
     public static TranslatorNode convertTo(Instruction inst) throws Exception
     {
-        return NodeCreatorFactory.getInstance().convert( inst );
+        NodeCreatorFactory factory = new NodeCreatorFactory();
+        TranslatorNode node = factory.convert( inst );
+        factory = null;
+        
+        return node;
     }
 
     public static TranslatorNode groupNode(TranslatorNode node) throws Exception
     {
-        return NodeCreatorFactory.getInstance().group( node );
-    }
-
-
-    public static void main(String args[]) throws Exception
-    {
-        COMPRESS = false;
-
-        String instTxt = "while( 1 == 1 ){ int total = a + b + c + d + e / f; int media = 2; }";
-
-        System.out.println( "------------------------- instrucao" );
-        System.out.println( instTxt + "\n" );
-
-
-        Instruction instObj = CreatorFactory.getInstance().convertTo( instTxt );
-
-        System.out.println( "------------------------- Objeto" );
-        System.out.println( instObj.toString() + "\n" );
-
-        TranslatorNode instNode = convertTo( instObj );
-
-        System.out.println( "------------------------- Node" );
-        System.out.println( instNode.toString() );
+        NodeCreatorFactory factory = new NodeCreatorFactory();
+        TranslatorNode nodeGroup = factory.group( node );
+        factory = null;
+        
+        return nodeGroup;
     }
 
 }

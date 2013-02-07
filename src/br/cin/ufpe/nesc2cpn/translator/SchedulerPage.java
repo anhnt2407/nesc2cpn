@@ -1,5 +1,6 @@
 package br.cin.ufpe.nesc2cpn.translator;
 
+import br.cin.ufpe.nesc2cpn.Nesc2CpnProperties;
 import br.cin.ufpe.nesc2cpn.cpnModule.CPNItem;
 import br.cin.ufpe.nesc2cpn.cpnModule.Page;
 import br.cin.ufpe.nesc2cpn.cpnModule.Place;
@@ -26,9 +27,12 @@ public class SchedulerPage
 
     private InstanceItens instance;
     private Trans schendulerTrans;
+    
+    private Nesc2CpnProperties properties;
 
-    public SchedulerPage()
+    public SchedulerPage(Nesc2CpnProperties properties)
     {
+        this.properties = properties;
         init();
     }
 
@@ -87,14 +91,18 @@ public class SchedulerPage
 
     public void createStartTrans()
     {
-        StartCPN startCPN = new StartCPN( getInPlace() , getOutPlace() );
+        boolean function = !properties.isCreateApplicationModel();
+        
+        StartCPN startCPN = new StartCPN( getInPlace() , getOutPlace() , function );
         page.getTrans().addAll( startCPN.getTransList() );
         page.getArcs().addAll( startCPN.getArcList() );
     }
 
     public void createEndTrans()
     {
-        EndCPN endCPN = new EndCPN( getInPlace() , getOutPlace() );
+        boolean function = !properties.isCreateApplicationModel();
+        
+        EndCPN endCPN = new EndCPN( getInPlace() , getOutPlace() , function );
         page.getTrans().addAll( endCPN.getTransList() );
         page.getArcs().addAll( endCPN.getArcList() );
     }

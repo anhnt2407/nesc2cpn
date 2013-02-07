@@ -1,6 +1,7 @@
 package br.cin.ufpe.nesc2cpn.param;
 
 import br.cin.ufpe.nesc2cpn.Nesc2CpnMain;
+import br.cin.ufpe.nesc2cpn.Nesc2CpnProperties;
 
 /**
  *
@@ -15,9 +16,9 @@ public class FileCheck extends AbstractCheckParameter
     }
 
     @Override
-    public int execute(String[] arg) throws Exception
+    public int execute(String[] arg , Nesc2CpnProperties properties ) throws Exception
     {
-        Nesc2CpnMain.filename = arg[ 0 ];
+        properties.setProjectDir( arg[ 0 ] );
         return 1;
     }
 

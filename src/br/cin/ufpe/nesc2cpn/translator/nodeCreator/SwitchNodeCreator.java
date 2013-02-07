@@ -17,9 +17,9 @@ import java.util.List;
 public class SwitchNodeCreator extends ComposedNodeCreator<Switch>
 {
 
-    public SwitchNodeCreator()
+    public SwitchNodeCreator( boolean reduction )
     {
-        
+        super( reduction );
     }
 
     @Override

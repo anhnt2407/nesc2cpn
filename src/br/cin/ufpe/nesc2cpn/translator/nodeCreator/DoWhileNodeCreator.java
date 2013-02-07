@@ -17,9 +17,9 @@ import br.cin.ufpe.nesc2cpn.translator.node.TranslatorNode;
 public class DoWhileNodeCreator extends ComposedNodeCreator<DoWhile>
 {
 
-    public DoWhileNodeCreator()
+    public DoWhileNodeCreator( boolean reduction )
     {
-        
+        super( reduction );
     }
 
     @Override

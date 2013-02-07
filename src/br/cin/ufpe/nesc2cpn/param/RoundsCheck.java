@@ -1,5 +1,7 @@
 package br.cin.ufpe.nesc2cpn.param;
 
+import br.cin.ufpe.nesc2cpn.Nesc2CpnProperties;
+
 /**
  *
  * @author avld
@@ -14,7 +16,7 @@ public class RoundsCheck extends AbstractCheckParameter
     }
 
     @Override
-    public int execute(String[] arg) throws Exception
+    public int execute(String[] arg , Nesc2CpnProperties properties ) throws Exception
     {
         int rounds = Integer.parseInt( arg[0] );
         System.getProperties().setProperty( "nesc2cpn.rounds" , rounds + "" );

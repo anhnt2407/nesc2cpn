@@ -1,6 +1,6 @@
 package br.cin.ufpe.nesc2cpn.translator;
 
-import br.cin.ufpe.nesc2cpn.Nesc2CpnMain;
+import br.cin.ufpe.nesc2cpn.Nesc2CpnProperties;
 import br.cin.ufpe.nesc2cpn.cpnModule.CPN;
 import br.cin.ufpe.nesc2cpn.cpnModule.CPNXML;
 import br.cin.ufpe.nesc2cpn.cpnModule.IndexNode.IndexNode;
@@ -31,7 +31,7 @@ import java.util.Set;
  */
 public class TranslatorControl
 {
-    private boolean translatorAFunction;
+    private Nesc2CpnProperties properties;
 
     private CPN cpn;
     private GlobboxMount globboxMount;
@@ -41,12 +41,13 @@ public class TranslatorControl
     private List<SimpleCPN> simpleCpnList;
     private Set<String> pageNameSet;
 
-    public TranslatorControl(boolean isFuction)
+    public TranslatorControl(Nesc2CpnProperties properties)
     {
+        this.properties = properties;
         init();
 
-        String moldingType = System.getProperties().getProperty( "nesc2cpn.moldingType" );
-        this.translatorAFunction = Nesc2CpnMain.MOLDING_TYPE_FUN.equals( moldingType );
+//        String moldingType = System.getProperties().getProperty( "nesc2cpn.moldingType" );
+//        this.translatorAFunction = Nesc2CpnMain.MOLDING_TYPE_FUN.equals( moldingType );
 
 //        System.setProperty( "nesc2cpn.moldingType" , isFuction
 //                               ? Nesc2CpnMain.MOLDING_TYPE_FUN
@@ -56,7 +57,7 @@ public class TranslatorControl
     private void init()
     {
         globboxMount = new GlobboxMount();
-        scheduler = new SchedulerPage();
+        scheduler = new SchedulerPage( properties );
         appFunctionList = new ArrayList<Trans>();
         simpleCpnList = new ArrayList<SimpleCPN>();
 
@@ -110,7 +111,7 @@ public class TranslatorControl
         simpleCpnList.addAll( functTranslator.getCpnItemList() );
 
         //Colocar apenas eventos na Scheduler Page
-        if( translatorAFunction
+        if( !properties.isCreateApplicationModel()
                 || ( function.getFunctionType() == null
                     ? false
                     : Function.EVENT.equals( function.getFunctionType() )
@@ -136,7 +137,7 @@ public class TranslatorControl
         for( Function function : functionList )
         {
             //Colocar apenas eventos na Scheduler Page
-            if( translatorAFunction
+            if( !properties.isCreateApplicationModel()
                     || ( function.getFunctionType() == null
                         ? false
                         : Function.EVENT.equals( function.getFunctionType() )

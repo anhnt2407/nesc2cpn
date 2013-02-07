@@ -1,5 +1,8 @@
 package br.cin.ufpe.nesc2cpn.param;
 
+import br.cin.ufpe.nesc2cpn.Nesc2CpnProperties;
+import java.util.Properties;
+
 /**
  *
  * @author avld
@@ -28,6 +31,6 @@ public abstract class AbstractCheckParameter
         return param;
     }
 
-    public abstract int execute(String[] arg) throws Exception;
+    public abstract int execute( String[] arg , Nesc2CpnProperties properties ) throws Exception;
     public abstract String help();
 }

@@ -5,6 +5,7 @@
 
 package br.cin.ufpe.nesc2cpn.param;
 
+import br.cin.ufpe.nesc2cpn.Nesc2CpnProperties;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -56,9 +57,10 @@ public class ParameterFactory
         return instance;
     }
 
-    public void configuration(String args[]) throws Exception
+    public Nesc2CpnProperties configuration(String args[]) throws Exception
     {
         int pos = 0;
+        Nesc2CpnProperties properties = new Nesc2CpnProperties();
 
         while( pos < args.length )
         {
@@ -88,7 +90,7 @@ public class ParameterFactory
             }
 
             String[] subArg = Arrays.copyOfRange( args , pos + 1 , pos + 1 + argNumber );
-            int saltos = abs.execute( subArg );
+            int saltos = abs.execute( subArg , properties );
 
             if( saltos < 0 )
             {
@@ -97,6 +99,8 @@ public class ParameterFactory
 
             pos += saltos + 1;
         }
+        
+        return properties;
     }
 
     public String help()

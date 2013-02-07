@@ -11,7 +11,12 @@ import java.util.List;
  */
 public abstract class ComposedNodeCreator<type> extends NodeCreator<type>
 {
-
+    private boolean reduction;
+    
+    public ComposedNodeCreator( boolean reduction )
+    {
+        this.reduction = reduction;
+    }
 
     protected TranslatorNode convertToNodeList(ComposedInstruction ci) throws Exception
     {
@@ -43,7 +48,7 @@ public abstract class ComposedNodeCreator<type> extends NodeCreator<type>
             }
         }
 
-        if( NodeCreatorFactory.COMPRESS )
+        if( reduction )
         {
             next = NodeCreatorFactory.groupNode( root.getNextNode() );
             root.setNextNode( next );

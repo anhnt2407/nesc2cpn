@@ -12,9 +12,9 @@ import br.cin.ufpe.nesc2cpn.translator.node.WhileNode;
 public class WhileNodeCreator extends ComposedNodeCreator<While>
 {
 
-    public WhileNodeCreator()
+    public WhileNodeCreator( boolean reduction )
     {
-        
+        super( reduction );
     }
 
     @Override

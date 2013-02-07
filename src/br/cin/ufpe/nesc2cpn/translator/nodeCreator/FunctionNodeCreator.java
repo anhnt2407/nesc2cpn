@@ -12,9 +12,9 @@ import br.cin.ufpe.nesc2cpn.translator.node.TranslatorNode;
 public class FunctionNodeCreator extends ComposedNodeCreator<Function>
 {
 
-    public FunctionNodeCreator()
+    public FunctionNodeCreator( boolean reduction )
     {
-        // do nothing
+        super( reduction );
     }
 
     @Override

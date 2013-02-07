@@ -11,10 +11,12 @@ import br.cin.ufpe.nesc2cpn.cpnModule.Trans;
  */
 public class EndCPN extends SimpleCPN
 {
+    private boolean function;
     
-    public EndCPN( Place inPLace , Place outPlace )
+    public EndCPN( Place inPLace , Place outPlace , boolean function )
     {
         init( inPLace , outPlace );
+        this.function = function;
     }
 
     private void init(Place inPLace , Place outPlace)
@@ -41,8 +43,8 @@ public class EndCPN extends SimpleCPN
         code += "  schedulerList := [];\n";
         code += "  schedulerList := (ins (!schedulerList) 1);\n";
 
-        String moldingType = System.getProperties().getProperty( "nesc2cpn.moldingType" );
-        if( Nesc2CpnMain.MOLDING_TYPE_FUN.equals( moldingType ) )
+        //String moldingType = System.getProperties().getProperty( "nesc2cpn.moldingType" );
+        if( function ) //Nesc2CpnMain.MOLDING_TYPE_FUN.equals( moldingType )
         {
             code += "  schedulerList := (ins (!schedulerList) ~1);\n";
         }

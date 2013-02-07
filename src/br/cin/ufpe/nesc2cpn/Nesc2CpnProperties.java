@@ -1,5 +1,7 @@
 package br.cin.ufpe.nesc2cpn;
 
+import java.net.URL;
+
 /**
  *
  * @author avld
@@ -9,9 +11,12 @@ public class Nesc2CpnProperties
     private boolean keep;
     private boolean onlyCreateModel;
     private boolean createApplicationModel;
+    private boolean reduction;
     private String outputDir;
+    private String projectDir;
     private String modelName;
     private String functionName;
+    private URL evaluateServiceUrl;
     
     public Nesc2CpnProperties()
     {
@@ -26,6 +31,7 @@ public class Nesc2CpnProperties
         createApplicationModel = true;
         outputDir = "./";
         modelName = "model.cpn";
+        evaluateServiceUrl = null;
     }
 
     public boolean isKeep() {
@@ -77,6 +83,30 @@ public class Nesc2CpnProperties
     {
         this.functionName = functionName;
         this.setCreateApplicationModel( functionName != null );
+    }
+
+    public URL getEvaluateServiceUrl() {
+        return evaluateServiceUrl;
+    }
+
+    public void setEvaluateServiceUrl(URL evaluateServiceUrl) {
+        this.evaluateServiceUrl = evaluateServiceUrl;
+    }
+
+    public String getProjectDir() {
+        return projectDir;
+    }
+
+    public void setProjectDir(String projectDir) {
+        this.projectDir = projectDir;
+    }
+
+    public boolean isReduction() {
+        return reduction;
+    }
+
+    public void setReduction(boolean reduction) {
+        this.reduction = reduction;
     }
     
 }

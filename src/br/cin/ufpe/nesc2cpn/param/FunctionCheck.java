@@ -1,6 +1,6 @@
 package br.cin.ufpe.nesc2cpn.param;
 
-import br.cin.ufpe.nesc2cpn.Nesc2CpnMain;
+import br.cin.ufpe.nesc2cpn.Nesc2CpnProperties;
 
 /**
  *
@@ -13,17 +13,17 @@ public class FunctionCheck extends AbstractCheckParameter
     {
         super( "-function" , 1 );
         
-        Nesc2CpnMain.isModelingApplication = true;
-        System.setProperty( "nesc2cpn.moldingType" , Nesc2CpnMain.MOLDING_TYPE_APP );
+        //Nesc2CpnMain.isModelingApplication = true;
+        //System.setProperty( "nesc2cpn.moldingType" , Nesc2CpnMain.MOLDING_TYPE_APP );
     }
 
     @Override
-    public int execute(String[] arg) throws Exception
+    public int execute(String[] arg , Nesc2CpnProperties properties ) throws Exception
     {
-        Nesc2CpnMain.functionname = arg[ 0 ];
-        Nesc2CpnMain.isModelingApplication = false;
+        properties.setFunctionName( arg[ 0 ] );
+        properties.setCreateApplicationModel( false );
 
-        System.setProperty( "nesc2cpn.moldingType" , Nesc2CpnMain.MOLDING_TYPE_FUN );
+        //System.setProperty( "nesc2cpn.moldingType" , Nesc2CpnMain.MOLDING_TYPE_FUN );
 
         return 1;
     }

@@ -1,5 +1,7 @@
 package br.cin.ufpe.nesc2cpn.param;
 
+import br.cin.ufpe.nesc2cpn.Nesc2CpnProperties;
+
 /**
  *
  * @author avld
@@ -14,9 +16,9 @@ public class ModelNameCheck extends AbstractCheckParameter
     }
 
     @Override
-    public int execute(String[] arg) throws Exception
+    public int execute(String[] arg , Nesc2CpnProperties properties ) throws Exception
     {
-        System.setProperty( "nesc2cpn.modelname" , arg[0] );
+        properties.setModelName( arg[0] );
         return 1;
     }
 

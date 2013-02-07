@@ -15,9 +15,9 @@ import br.cin.ufpe.nesc2cpn.translator.node.TranslatorNode;
 public class OperationNodeCreator extends ComposedNodeCreator<Operation>
 {
 
-    public OperationNodeCreator()
+    public OperationNodeCreator( boolean reduction )
     {
-        // do nothing
+        super( reduction );
     }
 
     @Override

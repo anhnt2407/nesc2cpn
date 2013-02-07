@@ -3,9 +3,9 @@ package br.cin.ufpe.nesc2cpn;
 import br.cin.ufpe.nesc2cpn.nescModule.Module;
 import br.cin.ufpe.nesc2cpn.nescModule.ProjectFile;
 import br.cin.ufpe.nesc2cpn.nescModule.instructions.Function;
-import br.cin.ufpe.nesc2cpn.repository.RepositoryControl;
 import br.cin.ufpe.nesc2cpn.repository.file.DatabaseUtil;
 import br.cin.ufpe.nesc2cpn.param.ParameterFactory;
+import br.cin.ufpe.nesc2cpn.repository.gui.EnergyListJFrame;
 import br.cin.ufpe.nesc2cpn.translator.TranslatorControl;
 import java.io.File;
 
@@ -15,19 +15,10 @@ import java.io.File;
  */
 public class Nesc2CpnMain
 {
-    public static String filename;
-    public static String functionname;
+    private static Nesc2CpnProperties properties;
+    private static ProjectFile projectFile;
     public static boolean showRepositoryManager;
-    public static boolean KEEP;
-    public static boolean ONLY_CREATE_MODEL;
-    public static boolean isModelingApplication;
-
-    public static final String MOLDING_TYPE_APP = "APPLICATION";
-    public static final String MOLDING_TYPE_FUN = "FUNCTION";
-
-    public static Function function;
-    public static Module module;
-
+    
     private static void execute( String filename ) throws Exception
     {
         File arquivo = new File( filename );
@@ -35,7 +26,7 @@ public class Nesc2CpnMain
         System.out.println( "file ..: " + filename );
         System.out.println( "diretory ..: " + (arquivo.getParent() == null ? "." : arquivo.getParent()) );
 
-        ProjectFile projectFile = new ProjectFile();
+        projectFile = new ProjectFile();
         projectFile.addDiretory( ( arquivo.getParent() == null ? "." : arquivo.getParent() ) );
         projectFile.processFile( arquivo.getName() );
 
@@ -50,13 +41,13 @@ public class Nesc2CpnMain
         // -------------------------------- //
 
         TranslatorControl control = null;
-        if( isModelingApplication )
+        if( properties.isCreateApplicationModel() )
         {
-            control = getModelingApplication( projectFile );
+            control = getModelingApplication();
         }
         else
         {
-            control = getModelingFunction( projectFile );
+            control = getModelingFunction();
         }
         
         String path = System.getProperty( "nesc2cpn.output" );
@@ -66,7 +57,7 @@ public class Nesc2CpnMain
         
         control.saveInFile( fullname );
 
-        if( ONLY_CREATE_MODEL )
+        if( properties.isOnlyCreateModel() )
         {
             return ;
         }
@@ -76,7 +67,7 @@ public class Nesc2CpnMain
 
         // ------------------------------
 
-        if( isModelingApplication )
+        if( properties.isCreateApplicationModel() )
         {
             // ---- NOT USED! result.setModuleName( function.getModuleName() );
             //result.setModuleName( module.getName() );
@@ -95,20 +86,20 @@ public class Nesc2CpnMain
 
         //RepositoryControl.getInstance().add( result );
         
-        if( !KEEP )
+        if( !properties.isKeep() )
         {
             //execute.deleteAllFile( fullname );
         }
     }
 
-    private static TranslatorControl getModelingFunction(ProjectFile projectFile) throws Exception
+    private static TranslatorControl getModelingFunction() throws Exception
     {
-        module = projectFile.getModuleList().get( 0 );
-        function = null;
+        Module module = projectFile.getModuleList().get( 0 );
+        Function function = null;
 
         for( Function m : module.getFunctions()  )
         {
-            if( m.getFunctionName().equalsIgnoreCase( functionname ) )
+            if( m.getFunctionName().equalsIgnoreCase( properties.getFunctionName() ) )
             {
                 function = m;
                 break;
@@ -124,18 +115,18 @@ public class Nesc2CpnMain
 //        System.out.println( function.toString() );
 //        System.out.println("=======----------------------=======\n");
 
-        TranslatorControl control = new TranslatorControl( true );
+        TranslatorControl control = new TranslatorControl( new Nesc2CpnProperties() );
         control.createPage( function );
         control.createCPN();
 
         return control;
     }
 
-    private static TranslatorControl getModelingApplication(ProjectFile projectFile) throws Exception
+    private static TranslatorControl getModelingApplication() throws Exception
     {
-        module = projectFile.getModuleList().get( 0 );
+        Module module = projectFile.getModuleList().get( 0 );
 
-        TranslatorControl control = new TranslatorControl( true );
+        TranslatorControl control = new TranslatorControl( new Nesc2CpnProperties() );
         control.createPage( module.getFunctions() );
         control.createCPN();
 
@@ -148,21 +139,16 @@ public class Nesc2CpnMain
     {
         //defaultConfiguration();
         //processParaments( args );
-        ParameterFactory.getInstance().configuration( args );
+        properties = ParameterFactory.getInstance().configuration( args );
 
         if( showRepositoryManager )
         {
-            // do nothig
+            EnergyListJFrame.showFrame();
         }
-        else if( filename != null )
+        else if( properties.getProjectDir() != null )
         {
-            execute( filename );
+            execute( properties.getProjectDir() );
             //System.exit( 0 );
-        }
-        else
-        {
-            String help = ParameterFactory.getInstance().help();
-            System.out.println( help ) ;
         }
     }
 

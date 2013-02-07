@@ -1,6 +1,6 @@
 package br.cin.ufpe.nesc2cpn.param;
 
-import br.cin.ufpe.nesc2cpn.Nesc2CpnMain;
+import br.cin.ufpe.nesc2cpn.Nesc2CpnProperties;
 
 /**
  *
@@ -12,13 +12,12 @@ public class KeepCheck extends AbstractCheckParameter
     public KeepCheck()
     {
         super( "-keep" , 0 );
-        Nesc2CpnMain.KEEP = false;
     }
 
     @Override
-    public int execute(String[] arg) throws Exception
+    public int execute(String[] arg , Nesc2CpnProperties properties ) throws Exception
     {
-        Nesc2CpnMain.KEEP = true;
+        properties.setKeep( true );
         return 0;
     }
 

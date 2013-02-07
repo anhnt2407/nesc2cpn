@@ -13,9 +13,9 @@ import br.cin.ufpe.nesc2cpn.translator.node.TranslatorNode;
 public class ForNodeCreator extends ComposedNodeCreator<For>
 {
 
-    public ForNodeCreator()
+    public ForNodeCreator( boolean reduction )
     {
-        
+        super( reduction );
     }
 
     @Override

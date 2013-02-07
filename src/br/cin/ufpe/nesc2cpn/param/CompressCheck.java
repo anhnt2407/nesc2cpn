@@ -1,6 +1,6 @@
 package br.cin.ufpe.nesc2cpn.param;
 
-import br.cin.ufpe.nesc2cpn.translator.nodeCreator.NodeCreatorFactory;
+import br.cin.ufpe.nesc2cpn.Nesc2CpnProperties;
 
 /**
  *
@@ -11,15 +11,13 @@ public class CompressCheck extends AbstractCheckParameter
 
     public CompressCheck()
     {
-        super( "-compress" , 0 );
-        NodeCreatorFactory.COMPRESS = false;
+        super( "-reduction" , 0 );
     }
 
     @Override
-    public int execute(String[] arg) throws Exception
+    public int execute(String[] arg , Nesc2CpnProperties properties ) throws Exception
     {
-        NodeCreatorFactory.COMPRESS = true;
-        
+        properties.setReduction( true );
         return 0;
     }
 

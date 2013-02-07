@@ -1,5 +1,7 @@
 package br.cin.ufpe.nesc2cpn;
 
+import br.cin.ufpe.evaluateservice.EvaluateService;
+import br.cin.ufpe.evaluateservice.EvaluateServiceService;
 import br.cin.ufpe.nesc2cpn.nescModule.Module;
 import br.cin.ufpe.nesc2cpn.nescModule.ProjectFile;
 import br.cin.ufpe.nesc2cpn.nescModule.instructions.Function;
@@ -22,14 +24,34 @@ public class NesC2CPN
     private ProjectFile projectFile;
     private String requestID;
     
+    private EvaluateService service;
+    
     public NesC2CPN()
     {
         properties = new Nesc2CpnProperties();
+        
+        EvaluateServiceService ess = new EvaluateServiceService();
+        service = ess.getEvaluateServicePort();
     }
     
-    public NesC2CPN(Nesc2CpnProperties properties)
+    public NesC2CPN( Nesc2CpnProperties properties )
     {
         this.properties = properties;
+        
+        EvaluateServiceService ess = null; 
+        
+        if( properties == null 
+                ? false 
+                : properties.getEvaluateServiceUrl() != null )
+        {
+            ess = new EvaluateServiceService( properties.getEvaluateServiceUrl() );
+        }
+        else
+        {
+            ess = new EvaluateServiceService();
+        }
+        
+        service = ess.getEvaluateServicePort();
     }
     
     public Nesc2CpnResult evaluateSync( String project , Properties prop ) throws Exception
@@ -93,7 +115,9 @@ public class NesC2CPN
 //        CpnExecute execute = CpnExecuteFactory.getInstance( "console" );
 //        Nesc2CpnResult result = execute.executar( fullname );
         
-
+        String email = prop.getProperty( "email" , "" );
+        requestID = service.evaluateApplication( fullname , email );
+                
         return requestID;
     }
     
@@ -116,7 +140,7 @@ public class NesC2CPN
             throw new Exception( "Please, select a method." );
         }
 
-        TranslatorControl control = new TranslatorControl( true );
+        TranslatorControl control = new TranslatorControl( properties );
         control.createPage( function );
         control.createCPN();
 
@@ -127,7 +151,7 @@ public class NesC2CPN
     {
         Module module = projectFile.getModuleList().get( 0 );
 
-        TranslatorControl control = new TranslatorControl( true );
+        TranslatorControl control = new TranslatorControl( properties );
         control.createPage( module.getFunctions() );
         control.createCPN();
 

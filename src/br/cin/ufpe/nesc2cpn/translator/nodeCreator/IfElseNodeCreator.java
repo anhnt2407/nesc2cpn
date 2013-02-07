@@ -15,9 +15,9 @@ import java.util.Map;
 public class IfElseNodeCreator extends ComposedNodeCreator<IfElse>
 {
 
-    public IfElseNodeCreator()
+    public IfElseNodeCreator( boolean reduction )
     {
-        
+        super( reduction );
     }
 
     @Override
