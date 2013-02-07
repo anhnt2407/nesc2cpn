@@ -5,10 +5,12 @@ import br.cin.ufpe.evaluateservice.EvaluateServiceService;
 import br.cin.ufpe.nesc2cpn.nescModule.Module;
 import br.cin.ufpe.nesc2cpn.nescModule.ProjectFile;
 import br.cin.ufpe.nesc2cpn.nescModule.instructions.Function;
+import br.cin.ufpe.nesc2cpn.repository.RepositoryControl;
 import br.cin.ufpe.nesc2cpn.repository.file.DatabaseUtil;
 import br.cin.ufpe.nesc2cpn.repository.gui.EnergyListJFrame;
 import br.cin.ufpe.nesc2cpn.translator.TranslatorControl;
 import java.io.File;
+import java.io.StringReader;
 import java.util.Properties;
 
 /**
@@ -17,21 +19,20 @@ import java.util.Properties;
  */
 public class NesC2CPN
 {
-    //public static final String MOLDING_TYPE_APP = "APPLICATION";
-    //public static final String MOLDING_TYPE_FUN = "FUNCTION";
-    
     private Nesc2CpnProperties properties;
     private ProjectFile projectFile;
     private String requestID;
     
-    private EvaluateService service;
+    private EvaluateService port;
+    private Module module;
+    private Function function;
     
     public NesC2CPN()
     {
         properties = new Nesc2CpnProperties();
         
         EvaluateServiceService ess = new EvaluateServiceService();
-        service = ess.getEvaluateServicePort();
+        port = ess.getEvaluateServicePort();
     }
     
     public NesC2CPN( Nesc2CpnProperties properties )
@@ -51,7 +52,7 @@ public class NesC2CPN
             ess = new EvaluateServiceService();
         }
         
-        service = ess.getEvaluateServicePort();
+        port = ess.getEvaluateServicePort();
     }
     
     public Nesc2CpnResult evaluateSync( String project , Properties prop ) throws Exception
@@ -116,15 +117,15 @@ public class NesC2CPN
 //        Nesc2CpnResult result = execute.executar( fullname );
         
         String email = prop.getProperty( "email" , "" );
-        requestID = service.evaluateApplication( fullname , email );
+        requestID = port.evaluateApplication( fullname , email );
                 
         return requestID;
     }
     
     private TranslatorControl getModelingFunction(String functionName) throws Exception
     {
-        Module module = projectFile.getModuleList().get( 0 );
-        Function function = null;
+        module = projectFile.getModuleList().get( 0 );
+        function = null;
 
         for( Function m : module.getFunctions()  )
         {
@@ -149,7 +150,7 @@ public class NesC2CPN
 
     private TranslatorControl getModelingApplication() throws Exception
     {
-        Module module = projectFile.getModuleList().get( 0 );
+        module = projectFile.getModuleList().get( 0 );
 
         TranslatorControl control = new TranslatorControl( properties );
         control.createPage( module.getFunctions() );
@@ -160,31 +161,59 @@ public class NesC2CPN
     
     public Nesc2CpnResult getResult( String requestID ) throws Exception
     {
-        Nesc2CpnResult result = null;
+        String resultStr = port.getResult( requestID );
         
-//        if( isApplication )
-//        {
-//            //result.setModuleName( function.getModuleName() );
-//            result.setModuleName( module.getName() );
-//            result.setInterfaceName( "" );
-//            result.setMethodName( "" );
-//            result.setPetriNet( "" );
-//        }
-//        else
-//        {
-//            //result.setModuleName( function.getModuleName() );
-//            result.setModuleName( module.getName() );
-//            result.setInterfaceName( function.getInterfaceName() );
-//            result.setMethodName( function.getFunctionName() );
-//            result.setPetriNet( "" );
-//        }
-//
-//        RepositoryControl.getInstance().add( result );
-//        
-//        if( properties.isKeep() )
-//        {
-//            execute.deleteAllFile( fullname );
-//        }
+        if( resultStr == null 
+                ? true 
+                : resultStr.isEmpty() )
+        {
+            throw new Exception( "there is still no result." );
+        }
+        else if( resultStr.contains( "erro" ) 
+                || resultStr.contains( "ERRO" ) )
+        {
+            throw new Exception( resultStr );
+        }
+        
+        Properties prop = new Properties();
+        prop.load( new StringReader( resultStr ) );
+        
+        Nesc2CpnResult result = new Nesc2CpnResult();
+        result.setEnergyMean( Double.parseDouble( prop.getProperty( "energy.mean" , "0.0" ) ) );
+        result.setEnergyError(Double.parseDouble( prop.getProperty( "energy.error" , "0.0" ) ) );
+        result.setEnergyVariance(Double.parseDouble( prop.getProperty( "energy.variance" , "0.0" ) ) );
+        
+        result.setPowerMean( Double.parseDouble( prop.getProperty( "power.mean" , "0.0" ) ) );
+        result.setPowerError(Double.parseDouble( prop.getProperty( "power.error" , "0.0" ) ) );
+        result.setPowerVariance(Double.parseDouble( prop.getProperty( "power.variance" , "0.0" ) ) );
+        
+        result.setTimeMean( Double.parseDouble( prop.getProperty( "time.mean" , "0.0" ) ) );
+        result.setTimeError(Double.parseDouble( prop.getProperty( "time.error" , "0.0" ) ) );
+        result.setTimeVariance(Double.parseDouble( prop.getProperty( "time.variance" , "0.0" ) ) );
+        
+        if( properties.isCreateApplicationModel() )
+        {
+            //result.setModuleName( function.getModuleName() );
+            result.setModuleName( module.getName() );
+            result.setInterfaceName( "" );
+            result.setMethodName( "" );
+            result.setPetriNet( "" );
+        }
+        else
+        {
+            //result.setModuleName( function.getModuleName() );
+            result.setModuleName( module.getName() );
+            result.setInterfaceName( function.getInterfaceName() );
+            result.setMethodName( function.getFunctionName() );
+            result.setPetriNet( "" );
+        }
+
+        RepositoryControl.getInstance().add( result );
+        
+        if( properties.isKeep() )
+        {
+            //execute.deleteAllFile( fullname );
+        }
         
         return result;
     }
