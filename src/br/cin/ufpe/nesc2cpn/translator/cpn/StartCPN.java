@@ -1,6 +1,5 @@
 package br.cin.ufpe.nesc2cpn.translator.cpn;
 
-import br.cin.ufpe.nesc2cpn.Nesc2CpnMain;
 import br.cin.ufpe.nesc2cpn.cpnModule.CPNItem;
 import br.cin.ufpe.nesc2cpn.cpnModule.Place;
 import br.cin.ufpe.nesc2cpn.cpnModule.Trans;
@@ -11,15 +10,15 @@ import br.cin.ufpe.nesc2cpn.cpnModule.Trans;
  */
 public class StartCPN extends SimpleCPN
 {
-    private boolean function;
-    
+    private boolean isFunction;
+;    
     public StartCPN( Place inPlace, Place outPlace , boolean function )
     {
         //Place place = initPlace( pos.getX() - DISTANCE * 2 , pos.getY() + DISTANCE * 2 );
         //place.setInitmark( new CPNItem("0") );
         
         init( inPlace , outPlace );
-        this.function = function;
+        this.isFunction = function;
     }
 
     private void init( Place inPlace , Place outPlace )
@@ -48,7 +47,7 @@ public class StartCPN extends SimpleCPN
         code += "  schedulerList := (ins (!schedulerList) 1);\n";
 
         //String moldingType = System.getProperties().getProperty( "nesc2cpn.moldingType" );
-        if( function ) //Nesc2CpnMain.MOLDING_TYPE_FUN.equals( moldingType )
+        if( isFunction ) //Nesc2CpnMain.MOLDING_TYPE_FUN.equals( moldingType )
         {
             code += "  schedulerList := (ins (!schedulerList) ~1);\n";
         }

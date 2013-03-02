@@ -171,20 +171,17 @@ public class TranslatorControl
     public String getCpnString() throws Exception
     {
         StringBuilder builder = new StringBuilder();
-        builder.append( "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n" );
+        builder.append( "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" standalone=\"no\"?>\n" );
+//        builder.append("<!DOCTYPE workspaceElements PUBLIC "
+//                + "\"-//CPN//DTD CPNXML 1.0//EN\" "
+//                + "\"http://www.daimi.au.dk/~cpntools/bin/DTD/6/cpn.dtd\">\n\n" );
         builder.append( CPNXML.convertTo( getCPN() ) );
-        
         return builder.toString();
     }
 
     public void saveInFile(String name) throws Exception
     {
         FileWriter writer = new FileWriter( name );
-        //writer.write( "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n" );
-//        writer.write( "<!DOCTYPE workspaceElements PUBLIC "
-//                + "\"-//CPN//DTD CPNXML 1.0//EN\" "
-//                + "\"http://www.daimi.au.dk/~cpntools/bin/DTD/6/cpn.dtd\">\n\n" );
-        //writer.write( CPNXML.convertTo( getCPN() ) );
         writer.write( getCpnString() );
         writer.close();
     }

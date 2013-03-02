@@ -33,6 +33,7 @@ public class NesC2CPN
         
         EvaluateServiceService ess = new EvaluateServiceService();
         port = ess.getEvaluateServicePort();
+        //port = new EvaluateServiceServer();
     }
     
     public NesC2CPN( Nesc2CpnProperties properties )
@@ -53,19 +54,27 @@ public class NesC2CPN
         }
         
         port = ess.getEvaluateServicePort();
+        //port = new EvaluateServiceServer();
     }
     
     public Nesc2CpnResult evaluateSync( String project , Properties prop ) throws Exception
     {
         requestID = evaluateAsync( project , prop );
         
+        if( requestID == null )
+        {
+            return null;
+        }
+        
+        System.out.println( "requestID: " + requestID );
+        
         Nesc2CpnResult result = null;
         do
         {
+            Thread.sleep( 100000 );
             result = getResult( requestID );
-            Thread.sleep( 500 );
         }
-        while( result != null );
+        while( result == null );
         
         return result;
     }
@@ -116,8 +125,8 @@ public class NesC2CPN
 //        CpnExecute execute = CpnExecuteFactory.getInstance( "console" );
 //        Nesc2CpnResult result = execute.executar( fullname );
         
-        String email = prop.getProperty( "email" , "" );
-        requestID = port.evaluateApplication( fullname , email );
+        String email = prop.getProperty( "email" , "tonho1c@gmail.com" );
+        requestID = port.evaluateApplication( control.getCpnString() , email );
                 
         return requestID;
     }
@@ -163,11 +172,14 @@ public class NesC2CPN
     {
         String resultStr = port.getResult( requestID );
         
+        System.out.println( "result: " + resultStr );
+        
         if( resultStr == null 
                 ? true 
                 : resultStr.isEmpty() )
         {
-            throw new Exception( "there is still no result." );
+            //throw new Exception( "there is still no result." );
+            return null;
         }
         else if( resultStr.contains( "erro" ) 
                 || resultStr.contains( "ERRO" ) )

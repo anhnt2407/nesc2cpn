@@ -1,7 +1,6 @@
 package br.cin.ufpe.nesc2cpn.param;
 
 import br.cin.ufpe.nesc2cpn.Nesc2CpnProperties;
-import java.util.Properties;
 
 /**
  *

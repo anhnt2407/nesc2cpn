@@ -11,6 +11,12 @@ import br.cin.ufpe.nesc2cpn.cpnModule.globbox.Ml;
 public class RoundFunctionBlock implements FunctionBlock
 {
 
+    public RoundFunctionBlock()
+    {
+        // do nothing
+    }
+    
+    @Override
     public Block getBlock()
     {
         Block roundBlock = new Block("Round Function");

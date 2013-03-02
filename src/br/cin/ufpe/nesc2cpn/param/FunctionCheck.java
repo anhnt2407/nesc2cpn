@@ -21,9 +21,10 @@ public class FunctionCheck extends AbstractCheckParameter
     public int execute(String[] arg , Nesc2CpnProperties properties ) throws Exception
     {
         properties.setFunctionName( arg[ 0 ] );
-        properties.setCreateApplicationModel( false );
+        //properties.setCreateApplicationModel( false );
 
         //System.setProperty( "nesc2cpn.moldingType" , Nesc2CpnMain.MOLDING_TYPE_FUN );
+        System.out.println( "nome da função..." );
 
         return 1;
     }

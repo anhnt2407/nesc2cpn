@@ -78,9 +78,9 @@ public class GlobboxMount
         intColor.setTimed( false );                 //true
 
         Var iVar = new Var();
-        iVar.setNameId("INT");
-        iVar.getTypeId().add("i");
-        iVar.getTypeId().add("n");
+        iVar.getTypeIdList().add( "INT" );
+        iVar.getNameIdList().add( "i" );
+        iVar.getNameIdList().add( "n" );
         iVar.setLayout( "var i , n : INT;" );
 
         Color boolColor = new Color();
@@ -89,8 +89,8 @@ public class GlobboxMount
         boolColor.setLayout( "colset BOOL = bool;" );  //timed
 
         Var respVar = new Var();
-        respVar.setNameId("BOOL");
-        respVar.getTypeId().add("resp");
+        respVar.getTypeIdList().add( "BOOL" );
+        respVar.getNameIdList().add( "resp" );
         respVar.setLayout( "var resp : BOOL;" );
 
         objList.add( intColor );

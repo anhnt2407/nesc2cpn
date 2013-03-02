@@ -2,6 +2,7 @@ package br.cin.ufpe.nesc2cpn;
 
 import br.cin.ufpe.nesc2cpn.param.ParameterFactory;
 import br.cin.ufpe.nesc2cpn.repository.gui.EnergyListJFrame;
+import java.net.URL;
 import java.util.Properties;
 
 /**
@@ -17,6 +18,7 @@ public class Nesc2CpnMain
         //defaultConfiguration();
         //processParaments( args );
         Nesc2CpnProperties properties = ParameterFactory.getInstance().configuration( args );
+        properties.setEvaluateServiceUrl( new URL( "http://localhost:8080/EvaluateService/ws?wsdl" ) );
 
         if( showRepositoryManager )
         {
@@ -43,7 +45,7 @@ public class Nesc2CpnMain
                            , "-keep"
                            //, "-output" , "/home/avld/Documentos/teste/"
                            //, "-output" , dir
-                           //, "-onlycreator"
+                           , "-onlycreator"
                            };
 
         //args = new String[]{ "-repositorymanager" };

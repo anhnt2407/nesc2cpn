@@ -91,18 +91,20 @@ public class SchedulerPage
 
     public void createStartTrans()
     {
-        boolean function = !properties.isCreateApplicationModel();
+        boolean isApplication = properties.isCreateApplicationModel();
         
-        StartCPN startCPN = new StartCPN( getInPlace() , getOutPlace() , function );
+        System.out.println( "isFunction: " + isApplication );
+        
+        StartCPN startCPN = new StartCPN( getInPlace() , getOutPlace() , !isApplication );
         page.getTrans().addAll( startCPN.getTransList() );
         page.getArcs().addAll( startCPN.getArcList() );
     }
 
     public void createEndTrans()
     {
-        boolean function = !properties.isCreateApplicationModel();
+        boolean isApplication = properties.isCreateApplicationModel();
         
-        EndCPN endCPN = new EndCPN( getInPlace() , getOutPlace() , function );
+        EndCPN endCPN = new EndCPN( getInPlace() , getOutPlace() , !isApplication );
         page.getTrans().addAll( endCPN.getTransList() );
         page.getArcs().addAll( endCPN.getArcList() );
     }

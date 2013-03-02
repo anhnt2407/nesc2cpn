@@ -82,7 +82,9 @@ public class Nesc2CpnProperties
     public void setFunctionName(String functionName)
     {
         this.functionName = functionName;
-        this.setCreateApplicationModel( functionName != null );
+        this.setCreateApplicationModel( functionName == null );
+        
+        System.out.println( "isApplication: " + createApplicationModel );
     }
 
     public URL getEvaluateServiceUrl() {
