@@ -34,12 +34,12 @@ public class Nesc2CpnMain
     public static void main(String args[]) throws Exception
     {
         //String dir = "/home/avld/pessoal/Doutorado/medicoes/Exemplo/exemplo04.1/ExampleAppC.nc";
-        String dir = "/opt/tinyos-2.1.1/apps/RadioCountToLeds/RadioCountToLedsC.nc";
+        String dir = "/opt/tinyos-2.1.1/apps/RadioCountToLeds/RadioCountToLedsAppC.nc";
 
         //"-file" , "/home/avld/pessoal/Doutorado/medicoes/Exemplo/exemplo04.1/ExampleAppC.nc"
         ///home/avld/pessoal/Doutorado/medicoes/Exemplo/exemplo08/ExampleAppC.nc
         args = new String[]{ "-file" , dir
-                           , "-function" , "booted"
+                           , "-function" , "stopDone"
                            //, "-function" , "modelagem"
                            //, "-function" , "fired"
                            //, "-function" , "readDone"

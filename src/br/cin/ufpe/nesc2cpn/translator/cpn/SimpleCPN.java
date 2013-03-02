@@ -136,6 +136,11 @@ public class SimpleCPN extends TranslatorCPN
 
     public CPNItem getCodeAddEnergy( List<Line> lineList )
     {
+        if( lineList.isEmpty() )
+        {
+            return new CPNItem();
+        }
+        
         StringBuilder builder = new StringBuilder();
         builder.append("output( resp );\n");
         builder.append("action(\n");

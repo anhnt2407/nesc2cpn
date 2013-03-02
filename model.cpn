@@ -1040,12 +1040,12 @@ action(
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
         <textattr colour="Black" bold="false"/>
-        <text>Boot
-booted</text>
+        <text>AMControl
+stopDone</text>
         <box w="60.0" h="40.0"/>
         <subst subpage="ID1007" portsock="(ID1011,ID1001)(ID1026,ID1004)">
-        <subpageinfo id="ID1034" name="Boot
-booted">
+        <subpageinfo id="ID1034" name="AMControl
+stopDone">
           <posattr x="900.0" y="-200.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -1308,8 +1308,8 @@ booted">
     </page>
 
     <page id="ID1007">
-      <pageattr name="Boot
-booted"/>
+      <pageattr name="AMControl
+stopDone"/>
 
       <place id="ID1026">
         <posattr x="0.0" y="-200.0"/>
@@ -1414,13 +1414,7 @@ booted"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">output( resp );
-action(
-  addEnergy( 0.0 , 0.0 );
-  addTime( 0.0 , 0.0 );
-  addRadioTime( (!timeInst) );
-  calcPower()
-);</text>
+          <text tool="CPN Tools" version="2.3.4"/>
         </code>
         <channel id="ID1018">
           <posattr x="0.0" y="0.0"/>
