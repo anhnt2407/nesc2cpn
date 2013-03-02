@@ -1,6 +1,5 @@
 package br.cin.ufpe.nesc2cpn.translator.cpn;
 
-import br.cin.ufpe.nesc2cpn.Nesc2CpnMain;
 import br.cin.ufpe.nesc2cpn.cpnModule.CPNItem;
 import br.cin.ufpe.nesc2cpn.cpnModule.Place;
 import br.cin.ufpe.nesc2cpn.cpnModule.Trans;
@@ -15,8 +14,8 @@ public class EndCPN extends SimpleCPN
     
     public EndCPN( Place inPLace , Place outPlace , boolean function )
     {
-        init( inPLace , outPlace );
         this.function = function;
+        init( inPLace , outPlace );
     }
 
     private void init(Place inPLace , Place outPlace)

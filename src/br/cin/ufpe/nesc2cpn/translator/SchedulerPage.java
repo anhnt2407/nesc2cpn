@@ -93,8 +93,6 @@ public class SchedulerPage
     {
         boolean isApplication = properties.isCreateApplicationModel();
         
-        System.out.println( "isFunction: " + isApplication );
-        
         StartCPN startCPN = new StartCPN( getInPlace() , getOutPlace() , !isApplication );
         page.getTrans().addAll( startCPN.getTransList() );
         page.getArcs().addAll( startCPN.getArcList() );

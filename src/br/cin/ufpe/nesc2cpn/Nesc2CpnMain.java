@@ -18,7 +18,7 @@ public class Nesc2CpnMain
         //defaultConfiguration();
         //processParaments( args );
         Nesc2CpnProperties properties = ParameterFactory.getInstance().configuration( args );
-        properties.setEvaluateServiceUrl( new URL( "http://localhost:8080/EvaluateService/ws?wsdl" ) );
+        //properties.setEvaluateServiceUrl( new URL( "http://localhost:8080/EvaluateService/ws?wsdl" ) );
 
         if( showRepositoryManager )
         {
@@ -33,12 +33,14 @@ public class Nesc2CpnMain
 
     public static void main(String args[]) throws Exception
     {
-        String dir = "/home/avld/pessoal/Doutorado/medicoes/Exemplo/exemplo04.1/";
+        //String dir = "/home/avld/pessoal/Doutorado/medicoes/Exemplo/exemplo04.1/ExampleAppC.nc";
+        String dir = "/opt/tinyos-2.1.1/apps/RadioCountToLeds/RadioCountToLedsC.nc";
 
         //"-file" , "/home/avld/pessoal/Doutorado/medicoes/Exemplo/exemplo04.1/ExampleAppC.nc"
         ///home/avld/pessoal/Doutorado/medicoes/Exemplo/exemplo08/ExampleAppC.nc
-        args = new String[]{ "-file" , dir + "ExampleAppC.nc"
-                           , "-function" , "modelagem"
+        args = new String[]{ "-file" , dir
+                           , "-function" , "booted"
+                           //, "-function" , "modelagem"
                            //, "-function" , "fired"
                            //, "-function" , "readDone"
 //                           , "-compress"

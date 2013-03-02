@@ -6,7 +6,7 @@
   <cpnet>
     <globbox>
 
-        <color id="ID1210">
+        <color id="ID1036">
           <id>INT</id>
           <int/>
 
@@ -14,7 +14,7 @@
           </layout>
 
         </color>
-        <var id="ID1211">
+        <var id="ID1037">
           <type>
             <id>INT</id>
           </type>
@@ -23,7 +23,7 @@
         <id>n</id>
           <layout>var i , n : INT;</layout>
         </var>
-        <color id="ID1212">
+        <color id="ID1038">
           <id>BOOL</id>
           <bool/>
 
@@ -31,7 +31,7 @@
           </layout>
 
         </color>
-        <var id="ID1213">
+        <var id="ID1039">
           <type>
             <id>BOOL</id>
           </type>
@@ -39,10 +39,10 @@
         <id>resp</id>
           <layout>var resp : BOOL;</layout>
         </var>
-      <block id="1214">
+      <block id="1040">
         <id>Scheduler Function</id>
 
-        <color id="ID1215">
+        <color id="ID1041">
           <id>INTs</id>
           <timed/>
           <list>
@@ -53,42 +53,42 @@
           </layout>
 
         </color>
-        <globref id="1216">
+        <globref id="1042">
           <id>schedulerList</id>
           <ml> [] : INTs </ml>
           <layout>globref schedulerList = [] : INTs;</layout>
         </globref>
 
-        <globref id="1217">
+        <globref id="1043">
           <id>iRef</id>
           <ml> 0 </ml>
           <layout>globref iRef = 0;</layout>
         </globref>
 
       </block>
-      <block id="1218">
+      <block id="1044">
         <id>Other</id>
 
-        <ml id="ID1219">val d = 20;
+        <ml id="ID1045">val d = 20;
           <layout>val d = 20;</layout>
 
         </ml>
 
-        <ml id="ID1220">fun realToInt r = IntInf.toInt(RealToIntInf d r);
+        <ml id="ID1046">fun realToInt r = IntInf.toInt(RealToIntInf d r);
           <layout>fun realToInt r = IntInf.toInt(RealToIntInf d r);</layout>
 
         </ml>
 
-        <ml id="ID1221">fun intToReal i = (IntInfToReal d(IntInf.fromInt i));
+        <ml id="ID1047">fun intToReal i = (IntInfToReal d(IntInf.fromInt i));
           <layout>fun intToReal i = (IntInfToReal d(IntInf.fromInt i));</layout>
 
         </ml>
 
       </block>
-      <block id="1222">
+      <block id="1048">
         <id>Statistic Function</id>
 
-        <ml id="ID1223">fun sum( dataList:real list, i:int, s:real ) =
+        <ml id="ID1049">fun sum( dataList:real list, i:int, s:real ) =
 (
   if( i &lt; length dataList ) then
     (
@@ -107,7 +107,7 @@
 
         </ml>
 
-        <ml id="ID1224">fun mean( dataList : real list ) =
+        <ml id="ID1050">fun mean( dataList : real list ) =
 (
   sum( dataList , 0 , 0.0 ) / real (length dataList)
 );
@@ -118,7 +118,7 @@
 
         </ml>
 
-        <ml id="ID1225">fun sumSD( dataList:real list,i:int,s:real,m:real ) =
+        <ml id="ID1051">fun sumSD( dataList:real list,i:int,s:real,m:real ) =
 (
   if( i &lt; length dataList ) then
     (
@@ -145,7 +145,7 @@
 
         </ml>
 
-        <ml id="ID1226">fun variance( dataList : real list ) = 
+        <ml id="ID1052">fun variance( dataList : real list ) = 
   let
      val m = mean( dataList );
   in
@@ -162,7 +162,7 @@
 
         </ml>
 
-        <ml id="ID1227">fun sd( dataList : real list ) =
+        <ml id="ID1053">fun sd( dataList : real list ) =
   (
      Math.sqrt( variance( dataList ) )
   );
@@ -174,40 +174,40 @@
         </ml>
 
       </block>
-      <block id="1228">
+      <block id="1054">
         <id>Criteria Stop Function</id>
 
-        <globref id="1229">
+        <globref id="1055">
           <id>errorMax</id>
           <ml> 0.5 </ml>
           <layout>globref errorMax = 0.5;</layout>
         </globref>
 
-        <globref id="1230">
+        <globref id="1056">
           <id>batchMaxSize</id>
           <ml> 100 </ml>
           <layout>globref batchMaxSize = 100;</layout>
         </globref>
 
-        <globref id="1231">
+        <globref id="1057">
           <id>batchList</id>
           <ml> nil : real list </ml>
           <layout>globref batchList = nil : real list;</layout>
         </globref>
 
-        <globref id="1232">
+        <globref id="1058">
           <id>batchMeanList</id>
           <ml> nil : real list </ml>
           <layout>globref batchMeanList = nil : real list;</layout>
         </globref>
 
-        <globref id="1233">
+        <globref id="1059">
           <id>tStudentList</id>
           <ml> nil : real list </ml>
           <layout>globref tStudentList = nil : real list;</layout>
         </globref>
 
-        <ml id="ID1234">fun addBatch( power : real ) =
+        <ml id="ID1060">fun addBatch( power : real ) =
 (
   batchList := ins (!batchList) power;
   if( length (!batchList) = !batchMaxSize ) then
@@ -230,7 +230,7 @@
 
         </ml>
 
-        <ml id="ID1235">fun getTStudent( degrees : int ) =
+        <ml id="ID1061">fun getTStudent( degrees : int ) =
  (
 if( degrees &lt;= 0 )
    then 0.0
@@ -275,7 +275,7 @@ else
 
         </ml>
 
-        <ml id="ID1236">fun initTStudentList() = (
+        <ml id="ID1062">fun initTStudentList() = (
   tStudentList := ins (!tStudentList) 6.314;
   tStudentList := ins (!tStudentList) 2.92;
   tStudentList := ins (!tStudentList) 2.353;
@@ -356,7 +356,7 @@ else
 
         </ml>
 
-        <ml id="ID1237">fun initCriteriaStop() =
+        <ml id="ID1063">fun initCriteriaStop() =
 (
   batchList := nil;
   batchMeanList := nil;
@@ -371,7 +371,7 @@ else
 
         </ml>
 
-        <ml id="ID1238">fun calcError() =
+        <ml id="ID1064">fun calcError() =
   let
      val n  = length (!batchMeanList);
      val t   = getTStudent( n - 1 );
@@ -390,7 +390,7 @@ else
 
         </ml>
 
-        <ml id="ID1239">fun checkError() =
+        <ml id="ID1065">fun checkError() =
  (
 if( length (!batchMeanList) &lt; 2 ) then false
 else (calcError() &lt;= !errorMax)
@@ -404,28 +404,28 @@ else (calcError() &lt;= !errorMax)
         </ml>
 
       </block>
-      <block id="1240">
+      <block id="1066">
         <id>Energy Function</id>
 
-        <globref id="1241">
+        <globref id="1067">
           <id>energyInst</id>
           <ml> 0.0 </ml>
           <layout>globref energyInst = 0.0;</layout>
         </globref>
 
-        <globref id="1242">
+        <globref id="1068">
           <id>energyTotal</id>
           <ml> 0.0 </ml>
           <layout>globref energyTotal = 0.0;</layout>
         </globref>
 
-        <globref id="1243">
+        <globref id="1069">
           <id>energyRound</id>
           <ml> 0.0 </ml>
           <layout>globref energyRound = 0.0;</layout>
         </globref>
 
-        <ml id="ID1244">fun addEnergy( mean:real , variance:real ) =
+        <ml id="ID1070">fun addEnergy( mean:real , variance:real ) =
   let
      val value = normal( mean , variance )
   in
@@ -445,28 +445,28 @@ else (calcError() &lt;= !errorMax)
         </ml>
 
       </block>
-      <block id="1245">
+      <block id="1071">
         <id>Time Function</id>
 
-        <globref id="1246">
+        <globref id="1072">
           <id>timeInst</id>
           <ml> 0.0 </ml>
           <layout>globref timeInst = 0.0;</layout>
         </globref>
 
-        <globref id="1247">
+        <globref id="1073">
           <id>timeTotal</id>
           <ml> 0.0 </ml>
           <layout>globref timeTotal = 0.0;</layout>
         </globref>
 
-        <globref id="1248">
+        <globref id="1074">
           <id>timeRound</id>
           <ml> 0.0 </ml>
           <layout>globref timeRound = 0.0;</layout>
         </globref>
 
-        <ml id="ID1249">fun addTime( mean:real , variance:real ) =
+        <ml id="ID1075">fun addTime( mean:real , variance:real ) =
   let
      val value = normal( mean , variance )
   in
@@ -486,22 +486,22 @@ else (calcError() &lt;= !errorMax)
         </ml>
 
       </block>
-      <block id="1250">
+      <block id="1076">
         <id>Power Function</id>
 
-        <globref id="1251">
+        <globref id="1077">
           <id>powerTotal</id>
           <ml> 0.0 </ml>
           <layout>globref powerTotal = 0.0;</layout>
         </globref>
 
-        <globref id="1252">
+        <globref id="1078">
           <id>powerRound</id>
           <ml> 0.0 </ml>
           <layout>globref powerRound = 0.0;</layout>
         </globref>
 
-        <ml id="ID1253">fun addPower( mean:real , variance:real ) =
+        <ml id="ID1079">fun addPower( mean:real , variance:real ) =
   let
      val value = normal( mean , variance )
   in
@@ -518,7 +518,7 @@ else (calcError() &lt;= !errorMax)
 
         </ml>
 
-        <ml id="ID1254">fun calcPower() =
+        <ml id="ID1080">fun calcPower() =
   let
      val value = (!energyInst) / (!timeInst)
   in
@@ -538,22 +538,22 @@ else (calcError() &lt;= !errorMax)
         </ml>
 
       </block>
-      <block id="1255">
+      <block id="1081">
         <id>Device Function</id>
 
-        <globref id="1256">
+        <globref id="1082">
           <id>radioTime</id>
           <ml> 0.0 </ml>
           <layout>globref radioTime = 0.0;</layout>
         </globref>
 
-        <globref id="1257">
+        <globref id="1083">
           <id>radioOn</id>
           <ml> false </ml>
           <layout>globref radioOn = false;</layout>
         </globref>
 
-        <ml id="ID1258">fun addRadioTime( t:real ) = (
+        <ml id="ID1084">fun addRadioTime( t:real ) = (
      if( (!radioOn) ) then 
        radioTime := (!radioTime) + t
     else ()
@@ -566,7 +566,7 @@ else (calcError() &lt;= !errorMax)
 
         </ml>
 
-        <ml id="ID1259">fun addRadioEnergy( t:real ) =
+        <ml id="ID1085">fun addRadioEnergy( t:real ) =
   let
      val value = t * normal( 0.0419232102 , 4.57647402025958E~5 )
   in
@@ -588,43 +588,43 @@ else (calcError() &lt;= !errorMax)
         </ml>
 
       </block>
-      <block id="1260">
+      <block id="1086">
         <id>File Function</id>
 
-        <globref id="1261">
+        <globref id="1087">
           <id>fileidE</id>
           <ml> (NONE : TextIO.outstream option) </ml>
           <layout>globref fileidE = (NONE : TextIO.outstream option);</layout>
         </globref>
 
-        <globref id="1262">
+        <globref id="1088">
           <id>fileidP</id>
           <ml> (NONE : TextIO.outstream option) </ml>
           <layout>globref fileidP = (NONE : TextIO.outstream option);</layout>
         </globref>
 
-        <globref id="1263">
+        <globref id="1089">
           <id>fileidT</id>
           <ml> (NONE : TextIO.outstream option) </ml>
           <layout>globref fileidT = (NONE : TextIO.outstream option);</layout>
         </globref>
 
-        <ml id="ID1264">fun getfidE () = Option.valOf(!fileidE)
+        <ml id="ID1090">fun getfidE () = Option.valOf(!fileidE)
           <layout>fun getfidE () = Option.valOf(!fileidE)</layout>
 
         </ml>
 
-        <ml id="ID1265">fun getfidP () = Option.valOf(!fileidP)
+        <ml id="ID1091">fun getfidP () = Option.valOf(!fileidP)
           <layout>fun getfidP () = Option.valOf(!fileidP)</layout>
 
         </ml>
 
-        <ml id="ID1266">fun getfidT () = Option.valOf(!fileidT)
+        <ml id="ID1092">fun getfidT () = Option.valOf(!fileidT)
           <layout>fun getfidT () = Option.valOf(!fileidT)</layout>
 
         </ml>
 
-        <ml id="ID1267">fun file_open ( name ) =
+        <ml id="ID1093">fun file_open ( name ) =
   let
      val dirOut = Output.getSimOutputDir()
      val f = OS.Path.concat ( dirOut , name )
@@ -653,7 +653,7 @@ end;</layout>
 
         </ml>
 
-        <ml id="ID1268">fun file_write ( eValue , tValue , pValue ) = (
+        <ml id="ID1094">fun file_write ( eValue , tValue , pValue ) = (
   TextIO.output(getfidE(), Real.toString( !eValue ) ^ "\n");
   TextIO.output(getfidT(), Real.toString( !tValue ) ^ "\n");
   TextIO.output(getfidP(), Real.toString( !pValue ) ^ "\n")
@@ -666,7 +666,7 @@ end;</layout>
 
         </ml>
 
-        <ml id="ID1269">fun file_close () = (
+        <ml id="ID1095">fun file_close () = (
   TextIO.closeOut( getfidE() );
   fileidE := NONE;
   TextIO.closeOut( getfidT() );
@@ -686,45 +686,35 @@ end;</layout>
         </ml>
 
       </block>
-      <block id="1270">
+      <block id="1096">
         <id>Extra GlobRef</id>
 
-        <globref id="1271">
-          <id>For1Counter</id>
-          <ml> 0 </ml>
-          <layout>globref For1Counter = 0;</layout>
-        </globref>
-
-        <ml id="ID1272">fun clearVariable() = (
+        <ml id="ID1097">fun clearVariable() = (
  radioOn := false;
  radioTime := 0.0;
  energyRound := 0.0;
  powerRound := 0.0;
- timeRound := 0.0;
- For1Counter := 0
-);
+ timeRound := 0.0);
           <layout>fun clearVariable() = (
  radioOn := false;
  radioTime := 0.0;
  energyRound := 0.0;
  powerRound := 0.0;
- timeRound := 0.0;
- For1Counter := 0
-);</layout>
+ timeRound := 0.0);</layout>
 
         </ml>
 
       </block>
-      <block id="1273">
+      <block id="1098">
         <id>Round Function</id>
 
-        <globref id="1274">
+        <globref id="1099">
           <id>rounds</id>
           <ml> 0 </ml>
           <layout>globref rounds = 0;</layout>
         </globref>
 
-        <ml id="ID1275">fun clearVariableAll() = (
+        <ml id="ID1100">fun clearVariableAll() = (
   energyTotal := 0.0;
   powerTotal := 0.0;
   timeTotal := 0.0;
@@ -743,7 +733,7 @@ end;</layout>
 
         </ml>
 
-        <ml id="ID1276">fun initMeasure( n:int ) = (
+        <ml id="ID1101">fun initMeasure( n:int ) = (
   clearVariableAll();
   file_open( "measure" );
   CPN&apos;Replications.nreplications n
@@ -756,7 +746,7 @@ end;</layout>
 
         </ml>
 
-        <ml id="ID1277">fun addRound() = (
+        <ml id="ID1102">fun addRound() = (
   inc rounds;
   addRadioEnergy( (!radioTime) );
   file_write( energyRound, timeRound, powerRound );
@@ -774,7 +764,7 @@ end;</layout>
       </block>
     </globbox>
 
-    <page id="ID1278">
+    <page id="ID1103">
       <pageattr name="scheduler"/>
 
       <place id="ID1001">
@@ -830,7 +820,7 @@ end;</layout>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4">INT</text>
         </type>
-        <initmark id="ID1355">
+        <initmark id="ID1180">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -839,7 +829,7 @@ end;</layout>
         </initmark>
       </place>
 
-      <trans id="ID1279" explicit="false">
+      <trans id="ID1104" explicit="false">
         <posattr x="0.0" y="0.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
@@ -847,21 +837,21 @@ end;</layout>
         <text>scheduler</text>
         <box w="60.0" h="40.0"/>
         <binding x="5.0" y="5.0"/>
-        <cond id="ID1356">
+        <cond id="ID1181">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </cond>
-        <time id="ID1357">
+        <time id="ID1182">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </time>
-        <code id="ID1280">
+        <code id="ID1105">
           <posattr x="40.0" y="30.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -877,14 +867,14 @@ action(
    !iRef
  ) );</text>
         </code>
-        <channel id="ID1358">
+        <channel id="ID1183">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </channel>
-        <priority id="ID1359">
+        <priority id="ID1184">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -893,7 +883,7 @@ action(
         </priority>
       </trans>
 
-      <trans id="ID1297" explicit="false">
+      <trans id="ID1122" explicit="false">
         <posattr x="0.0" y="-200.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
@@ -901,21 +891,21 @@ action(
         <text>start</text>
         <box w="60.0" h="40.0"/>
         <binding x="5.0" y="5.0"/>
-        <cond id="ID1298">
+        <cond id="ID1123">
           <posattr x="0.0" y="-210.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4">[i = ~2]</text>
         </cond>
-        <time id="ID1360">
+        <time id="ID1185">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </time>
-        <code id="ID1299">
+        <code id="ID1124">
           <posattr x="40.0" y="-170.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -927,17 +917,18 @@ action(
   file_open(&quot;simulation&quot;);
   schedulerList := [];
   schedulerList := (ins (!schedulerList) 1);
+  schedulerList := (ins (!schedulerList) ~1);
   0
 );</text>
         </code>
-        <channel id="ID1296">
+        <channel id="ID1121">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </channel>
-        <priority id="ID1361">
+        <priority id="ID1186">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -946,7 +937,7 @@ action(
         </priority>
       </trans>
 
-      <trans id="ID1313" explicit="false">
+      <trans id="ID1138" explicit="false">
         <posattr x="300.0" y="-200.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
@@ -954,21 +945,21 @@ action(
         <text>end</text>
         <box w="60.0" h="40.0"/>
         <binding x="5.0" y="5.0"/>
-        <cond id="ID1314">
+        <cond id="ID1139">
           <posattr x="300.0" y="-210.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4">[i = ~1]</text>
         </cond>
-        <time id="ID1362">
+        <time id="ID1187">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </time>
-        <code id="ID1315">
+        <code id="ID1140">
           <posattr x="340.0" y="-170.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -979,17 +970,18 @@ action(
   addRound();
   schedulerList := [];
   schedulerList := (ins (!schedulerList) 1);
+  schedulerList := (ins (!schedulerList) ~1);
   0
 );</text>
         </code>
-        <channel id="ID1312">
+        <channel id="ID1137">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </channel>
-        <priority id="ID1363">
+        <priority id="ID1188">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -998,7 +990,7 @@ action(
         </priority>
       </trans>
 
-      <trans id="ID1331" explicit="false">
+      <trans id="ID1156" explicit="false">
         <posattr x="600.0" y="-200.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
@@ -1006,35 +998,35 @@ action(
         <text>sleep</text>
         <box w="60.0" h="40.0"/>
         <binding x="5.0" y="5.0"/>
-        <cond id="ID1332">
+        <cond id="ID1157">
           <posattr x="600.0" y="-210.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4">[ i = 0 ]</text>
         </cond>
-        <time id="ID1364">
+        <time id="ID1189">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </time>
-        <code id="ID1365">
+        <code id="ID1190">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </code>
-        <channel id="ID1330">
+        <channel id="ID1155">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </channel>
-        <priority id="ID1366">
+        <priority id="ID1191">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -1043,15 +1035,17 @@ action(
         </priority>
       </trans>
 
-      <trans id="ID1207" explicit="false">
+      <trans id="ID1033" explicit="false">
         <posattr x="900.0" y="-200.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
         <textattr colour="Black" bold="false"/>
-        <text>modelagem</text>
+        <text>Boot
+booted</text>
         <box w="60.0" h="40.0"/>
-        <subst subpage="ID1007" portsock="(ID1011,ID1001)(ID1200,ID1004)">
-        <subpageinfo id="ID1208" name="modelagem">
+        <subst subpage="ID1007" portsock="(ID1011,ID1001)(ID1026,ID1004)">
+        <subpageinfo id="ID1034" name="Boot
+booted">
           <posattr x="900.0" y="-200.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -1059,35 +1053,35 @@ action(
           <text tool="CPN Tools" version="2.3.4"/>
         </subpageinfo>
         </subst>        <binding x="5.0" y="5.0"/>
-        <cond id="ID1367">
+        <cond id="ID1192">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </cond>
-        <time id="ID1368">
+        <time id="ID1193">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </time>
-        <code id="ID1369">
+        <code id="ID1194">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </code>
-        <channel id="ID1370">
+        <channel id="ID1195">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </channel>
-        <priority id="ID1371">
+        <priority id="ID1196">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -1096,28 +1090,28 @@ action(
         </priority>
       </trans>
 
-      <arc id="ID1283" orientation="PtoT" order="0">
+      <arc id="ID1108" orientation="PtoT" order="0">
         <posattr x="0.0" y="0.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
         <textattr colour="Black" bold="false"/>
-        <transend idref="ID1279"/>
+        <transend idref="ID1104"/>
         <placeend idref="ID1004"/>
-        <bendpoint id="ID1285" serial="1">
+        <bendpoint id="ID1110" serial="1">
           <posattr x="-100.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </bendpoint>
-        <bendpoint id="ID1286" serial="2">
+        <bendpoint id="ID1111" serial="2">
           <posattr x="-100.0" y="-300.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </bendpoint>
-        <annot id="ID1284">
+        <annot id="ID1109">
           <posattr x="5.0" y="-150.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -1126,14 +1120,14 @@ action(
         </annot>
       </arc>
 
-      <arc id="ID1289" orientation="TtoP" order="0">
+      <arc id="ID1114" orientation="TtoP" order="0">
         <posattr x="0.0" y="0.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
         <textattr colour="Black" bold="false"/>
-        <transend idref="ID1279"/>
+        <transend idref="ID1104"/>
         <placeend idref="ID1001"/>
-        <annot id="ID1291">
+        <annot id="ID1116">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -1142,14 +1136,14 @@ action(
         </annot>
       </arc>
 
-      <arc id="ID1302" orientation="PtoT" order="0">
+      <arc id="ID1127" orientation="PtoT" order="0">
         <posattr x="0.0" y="0.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
         <textattr colour="Black" bold="false"/>
-        <transend idref="ID1297"/>
+        <transend idref="ID1122"/>
         <placeend idref="ID1001"/>
-        <annot id="ID1303">
+        <annot id="ID1128">
           <posattr x="5.0" y="-150.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -1158,14 +1152,14 @@ action(
         </annot>
       </arc>
 
-      <arc id="ID1306" orientation="TtoP" order="0">
+      <arc id="ID1131" orientation="TtoP" order="0">
         <posattr x="0.0" y="0.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
         <textattr colour="Black" bold="false"/>
-        <transend idref="ID1297"/>
+        <transend idref="ID1122"/>
         <placeend idref="ID1004"/>
-        <annot id="ID1307">
+        <annot id="ID1132">
           <posattr x="5.0" y="-250.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -1174,21 +1168,21 @@ action(
         </annot>
       </arc>
 
-      <arc id="ID1318" orientation="PtoT" order="0">
+      <arc id="ID1143" orientation="PtoT" order="0">
         <posattr x="0.0" y="0.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
         <textattr colour="Black" bold="false"/>
-        <transend idref="ID1313"/>
+        <transend idref="ID1138"/>
         <placeend idref="ID1001"/>
-        <bendpoint id="ID1320" serial="1">
+        <bendpoint id="ID1145" serial="1">
           <posattr x="300.0" y="-100.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </bendpoint>
-        <annot id="ID1319">
+        <annot id="ID1144">
           <posattr x="155.0" y="-150.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -1197,21 +1191,21 @@ action(
         </annot>
       </arc>
 
-      <arc id="ID1323" orientation="TtoP" order="0">
+      <arc id="ID1148" orientation="TtoP" order="0">
         <posattr x="0.0" y="0.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
         <textattr colour="Black" bold="false"/>
-        <transend idref="ID1313"/>
+        <transend idref="ID1138"/>
         <placeend idref="ID1004"/>
-        <bendpoint id="ID1325" serial="1">
+        <bendpoint id="ID1150" serial="1">
           <posattr x="300.0" y="-300.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </bendpoint>
-        <annot id="ID1324">
+        <annot id="ID1149">
           <posattr x="155.0" y="-250.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -1220,21 +1214,21 @@ action(
         </annot>
       </arc>
 
-      <arc id="ID1335" orientation="PtoT" order="0">
+      <arc id="ID1160" orientation="PtoT" order="0">
         <posattr x="0.0" y="0.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
         <textattr colour="Black" bold="false"/>
-        <transend idref="ID1331"/>
+        <transend idref="ID1156"/>
         <placeend idref="ID1001"/>
-        <bendpoint id="ID1337" serial="1">
+        <bendpoint id="ID1162" serial="1">
           <posattr x="600.0" y="-100.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </bendpoint>
-        <annot id="ID1336">
+        <annot id="ID1161">
           <posattr x="305.0" y="-150.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -1243,21 +1237,21 @@ action(
         </annot>
       </arc>
 
-      <arc id="ID1340" orientation="TtoP" order="0">
+      <arc id="ID1165" orientation="TtoP" order="0">
         <posattr x="0.0" y="0.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
         <textattr colour="Black" bold="false"/>
-        <transend idref="ID1331"/>
+        <transend idref="ID1156"/>
         <placeend idref="ID1004"/>
-        <bendpoint id="ID1342" serial="1">
+        <bendpoint id="ID1167" serial="1">
           <posattr x="600.0" y="-300.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </bendpoint>
-        <annot id="ID1341">
+        <annot id="ID1166">
           <posattr x="305.0" y="-250.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -1266,21 +1260,21 @@ action(
         </annot>
       </arc>
 
-      <arc id="ID1345" orientation="PtoT" order="0">
+      <arc id="ID1170" orientation="PtoT" order="0">
         <posattr x="0.0" y="0.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
         <textattr colour="Black" bold="false"/>
-        <transend idref="ID1207"/>
+        <transend idref="ID1033"/>
         <placeend idref="ID1001"/>
-        <bendpoint id="ID1347" serial="1">
+        <bendpoint id="ID1172" serial="1">
           <posattr x="900.0" y="-100.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </bendpoint>
-        <annot id="ID1346">
+        <annot id="ID1171">
           <posattr x="455.0" y="-150.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -1289,21 +1283,21 @@ action(
         </annot>
       </arc>
 
-      <arc id="ID1350" orientation="TtoP" order="0">
+      <arc id="ID1175" orientation="TtoP" order="0">
         <posattr x="0.0" y="0.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
         <textattr colour="Black" bold="false"/>
-        <transend idref="ID1207"/>
+        <transend idref="ID1033"/>
         <placeend idref="ID1004"/>
-        <bendpoint id="ID1352" serial="1">
+        <bendpoint id="ID1177" serial="1">
           <posattr x="900.0" y="-300.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </bendpoint>
-        <annot id="ID1351">
+        <annot id="ID1176">
           <posattr x="455.0" y="-250.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -1314,10 +1308,11 @@ action(
     </page>
 
     <page id="ID1007">
-      <pageattr name="modelagem"/>
+      <pageattr name="Boot
+booted"/>
 
-      <place id="ID1200">
-        <posattr x="0.0" y="-1800.0"/>
+      <place id="ID1026">
+        <posattr x="0.0" y="-200.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
         <textattr colour="Black" bold="false"/>
@@ -1331,22 +1326,22 @@ action(
                 anchor.horizontal="0"
                 anchor.vertical="0"/>
         </marking>
-        <type id="ID1201">
-          <posattr x="30.0" y="-1830.0"/>
+        <type id="ID1027">
+          <posattr x="30.0" y="-230.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4">INT</text>
         </type>
-        <initmark id="ID1372">
+        <initmark id="ID1197">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </initmark>
-        <port id="ID1202" type="Out">
-          <posattr x="-10.0" y="-1820.0"/>
+        <port id="ID1028" type="Out">
+          <posattr x="-10.0" y="-220.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
@@ -1383,261 +1378,13 @@ action(
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </initmark>
-        <port id="ID1199" type="In">
+        <port id="ID1025" type="In">
           <posattr x="-10.0" y="-20.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </port>
-      </place>
-
-      <place id="ID1028">
-        <posattr x="0.0" y="-200.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <text>place2-FOR</text>
-        <ellipse w="60.0" h="40.0"/>
-        <token x="0.0" y="0.0"/>
-        <marking x="0.0"
-                 y="0.0"
-                 hidden="false">
-          <snap snap_id="0"
-                anchor.horizontal="0"
-                anchor.vertical="0"/>
-        </marking>
-        <type id="ID1030">
-          <posattr x="30.0" y="-230.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">INT</text>
-        </type>
-        <initmark id="ID1029">
-          <posattr x="30.0" y="-170.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </initmark>
-      </place>
-
-      <place id="ID1045">
-        <posattr x="100.0" y="-600.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <text>place3-FOR</text>
-        <ellipse w="60.0" h="40.0"/>
-        <token x="0.0" y="0.0"/>
-        <marking x="0.0"
-                 y="0.0"
-                 hidden="false">
-          <snap snap_id="0"
-                anchor.horizontal="0"
-                anchor.vertical="0"/>
-        </marking>
-        <type id="ID1047">
-          <posattr x="130.0" y="-630.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">INT</text>
-        </type>
-        <initmark id="ID1046">
-          <posattr x="130.0" y="-570.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </initmark>
-      </place>
-
-      <place id="ID1062">
-        <posattr x="0.0" y="-400.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <text>place4-FOR</text>
-        <ellipse w="60.0" h="40.0"/>
-        <token x="0.0" y="0.0"/>
-        <marking x="0.0"
-                 y="0.0"
-                 hidden="false">
-          <snap snap_id="0"
-                anchor.horizontal="0"
-                anchor.vertical="0"/>
-        </marking>
-        <type id="ID1064">
-          <posattr x="30.0" y="-430.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">INT</text>
-        </type>
-        <initmark id="ID1063">
-          <posattr x="30.0" y="-370.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </initmark>
-      </place>
-
-      <place id="ID1088">
-        <posattr x="100.0" y="-800.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <text>place5</text>
-        <ellipse w="60.0" h="40.0"/>
-        <token x="0.0" y="0.0"/>
-        <marking x="0.0"
-                 y="0.0"
-                 hidden="false">
-          <snap snap_id="0"
-                anchor.horizontal="0"
-                anchor.vertical="0"/>
-        </marking>
-        <type id="ID1090">
-          <posattr x="130.0" y="-830.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">INT</text>
-        </type>
-        <initmark id="ID1089">
-          <posattr x="130.0" y="-770.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </initmark>
-      </place>
-
-      <place id="ID1105">
-        <posattr x="100.0" y="-1000.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <text>place6</text>
-        <ellipse w="60.0" h="40.0"/>
-        <token x="0.0" y="0.0"/>
-        <marking x="0.0"
-                 y="0.0"
-                 hidden="false">
-          <snap snap_id="0"
-                anchor.horizontal="0"
-                anchor.vertical="0"/>
-        </marking>
-        <type id="ID1107">
-          <posattr x="130.0" y="-1030.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">INT</text>
-        </type>
-        <initmark id="ID1106">
-          <posattr x="130.0" y="-970.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </initmark>
-      </place>
-
-      <place id="ID1126">
-        <posattr x="100.0" y="-1200.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <text>place7</text>
-        <ellipse w="60.0" h="40.0"/>
-        <token x="0.0" y="0.0"/>
-        <marking x="0.0"
-                 y="0.0"
-                 hidden="false">
-          <snap snap_id="0"
-                anchor.horizontal="0"
-                anchor.vertical="0"/>
-        </marking>
-        <type id="ID1128">
-          <posattr x="130.0" y="-1230.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">INT</text>
-        </type>
-        <initmark id="ID1127">
-          <posattr x="130.0" y="-1170.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </initmark>
-      </place>
-
-      <place id="ID1147">
-        <posattr x="100.0" y="-1400.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <text>place8</text>
-        <ellipse w="60.0" h="40.0"/>
-        <token x="0.0" y="0.0"/>
-        <marking x="0.0"
-                 y="0.0"
-                 hidden="false">
-          <snap snap_id="0"
-                anchor.horizontal="0"
-                anchor.vertical="0"/>
-        </marking>
-        <type id="ID1149">
-          <posattr x="130.0" y="-1430.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">INT</text>
-        </type>
-        <initmark id="ID1148">
-          <posattr x="130.0" y="-1370.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </initmark>
-      </place>
-
-      <place id="ID1168">
-        <posattr x="100.0" y="-1600.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <text>place9</text>
-        <ellipse w="60.0" h="40.0"/>
-        <token x="0.0" y="0.0"/>
-        <marking x="0.0"
-                 y="0.0"
-                 hidden="false">
-          <snap snap_id="0"
-                anchor.horizontal="0"
-                anchor.vertical="0"/>
-        </marking>
-        <type id="ID1170">
-          <posattr x="130.0" y="-1630.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">INT</text>
-        </type>
-        <initmark id="ID1169">
-          <posattr x="130.0" y="-1570.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </initmark>
       </place>
 
       <trans id="ID1019" explicit="false">
@@ -1648,14 +1395,14 @@ action(
         <text>trans1</text>
         <box w="60.0" h="40.0"/>
         <binding x="5.0" y="5.0"/>
-        <cond id="ID1209">
+        <cond id="ID1035">
           <posattr x="0.0" y="-110.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4">[ i = 1 ]</text>
         </cond>
-        <time id="ID1373">
+        <time id="ID1198">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -1669,9 +1416,9 @@ action(
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4">output( resp );
 action(
-  addEnergy( 5.69E~5 , 6.34482758620625E~14 );
-  addTime( 5.69E~5 , 6.34482758620625E~14 );
-  radioOn := true;
+  addEnergy( 0.0 , 0.0 );
+  addTime( 0.0 , 0.0 );
+  addRadioTime( (!timeInst) );
   calcPower()
 );</text>
         </code>
@@ -1682,419 +1429,7 @@ action(
           <textattr colour="Black" bold="false"/>
           <text tool="CPN Tools" version="2.3.4"/>
         </channel>
-        <priority id="ID1374">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </priority>
-      </trans>
-
-      <trans id="ID1036" explicit="false">
-        <posattr x="0.0" y="-300.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <text>trans2-FOR</text>
-        <box w="60.0" h="40.0"/>
-        <binding x="5.0" y="5.0"/>
-        <cond id="ID1375">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </cond>
-        <time id="ID1376">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </time>
-        <code id="ID1037">
-          <posattr x="40.0" y="-270.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">output( resp );
-action(
-  addEnergy( 2.17E~8 , 1.46949387289827E~17 );
-  addTime( 4.28E~7 , 2.0689655172412E~17 );
-  addRadioTime( (!timeInst) );
-  calcPower()
-);</text>
-        </code>
-        <channel id="ID1035">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </channel>
-        <priority id="ID1377">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </priority>
-      </trans>
-
-      <trans id="ID1053" explicit="false">
-        <posattr x="100.0" y="-700.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <text>trans3-FOR</text>
-        <box w="60.0" h="40.0"/>
-        <binding x="5.0" y="5.0"/>
-        <cond id="ID1378">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </cond>
-        <time id="ID1379">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </time>
-        <code id="ID1054">
-          <posattr x="140.0" y="-670.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">action(
-  if( (!For1Counter) &lt;= 0 ) then For1Counter := 1
-  else (
-       addEnergy( 3.56281818181818E~8 , 4.41053690510109E~17 );
-  addTime( 6.58583333333333E~7 , 1.1795977011494E~16 );
-  addRadioTime( (!timeInst) );
-  calcPower();
-     For1Counter := (!For1Counter) + 1)
- );</text>
-        </code>
-        <channel id="ID1052">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </channel>
-        <priority id="ID1380">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </priority>
-      </trans>
-
-      <trans id="ID1070" explicit="false">
-        <posattr x="0.0" y="-500.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <text>trans4-FOR</text>
-        <box w="60.0" h="40.0"/>
-        <binding x="5.0" y="5.0"/>
-        <cond id="ID1381">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </cond>
-        <time id="ID1382">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </time>
-        <code id="ID1071">
-          <posattr x="40.0" y="-470.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">input(i);
-output(n);
-action(
-  addEnergy( 4.23363636363636E~8 , 8.17374750641207E~17 );
-  addTime( 7.9675E~7 , 5.01293103448274E~16 );
-  addRadioTime( (!timeInst) );
-  calcPower();
-  if( (!For1Counter) &lt; 10 ) then 1
-  else 0
- );</text>
-        </code>
-        <channel id="ID1069">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </channel>
-        <priority id="ID1383">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </priority>
-      </trans>
-
-      <trans id="ID1096" explicit="false">
-        <posattr x="100.0" y="-900.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <text>trans5</text>
-        <box w="60.0" h="40.0"/>
-        <binding x="5.0" y="5.0"/>
-        <cond id="ID1384">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </cond>
-        <time id="ID1385">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </time>
-        <code id="ID1097">
-          <posattr x="140.0" y="-870.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">output( resp );
-action(
-  addEnergy( 0.00556 , 7.35511051581644E~7 );
-  addTime( 0.248 , 9.45402298850521E~8 );
-  addRadioTime( (!timeInst) );
-  calcPower()
-);</text>
-        </code>
-        <channel id="ID1095">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </channel>
-        <priority id="ID1386">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </priority>
-      </trans>
-
-      <trans id="ID1113" explicit="false">
-        <posattr x="100.0" y="-1100.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <text>trans6</text>
-        <box w="60.0" h="40.0"/>
-        <binding x="5.0" y="5.0"/>
-        <cond id="ID1387">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </cond>
-        <time id="ID1388">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </time>
-        <code id="ID1114">
-          <posattr x="140.0" y="-1070.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">output( resp );
-action(
-  addEnergy( 0.0012718545 , 3.1298527899686E~9 );
-  addTime( 0.010182 , 3.72413793103353E~11 );
-  addRadioTime( (!timeInst) );
-  calcPower()
-);</text>
-        </code>
-        <channel id="ID1112">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </channel>
-        <priority id="ID1389">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </priority>
-      </trans>
-
-      <trans id="ID1134" explicit="false">
-        <posattr x="100.0" y="-1300.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <text>trans7</text>
-        <box w="60.0" h="40.0"/>
-        <binding x="5.0" y="5.0"/>
-        <cond id="ID1390">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </cond>
-        <time id="ID1391">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </time>
-        <code id="ID1135">
-          <posattr x="140.0" y="-1270.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">output( resp );
-action(
-  addEnergy( 4.17E~8 , 2.60135651182668E~17 );
-  addTime( 8.14E~7 , 2.31321839080471E~17 );
-  addRadioTime( (!timeInst) );
-  calcPower()
-);</text>
-        </code>
-        <channel id="ID1133">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </channel>
-        <priority id="ID1392">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </priority>
-      </trans>
-
-      <trans id="ID1155" explicit="false">
-        <posattr x="100.0" y="-1500.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <text>trans8</text>
-        <box w="60.0" h="40.0"/>
-        <binding x="5.0" y="5.0"/>
-        <cond id="ID1393">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </cond>
-        <time id="ID1394">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </time>
-        <code id="ID1156">
-          <posattr x="140.0" y="-1470.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">output( resp );
-action(
-  addEnergy( 4.17E~8 , 2.60135651182668E~17 );
-  addTime( 8.14E~7 , 2.31321839080471E~17 );
-  addRadioTime( (!timeInst) );
-  calcPower()
-);</text>
-        </code>
-        <channel id="ID1154">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </channel>
-        <priority id="ID1395">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </priority>
-      </trans>
-
-      <trans id="ID1176" explicit="false">
-        <posattr x="100.0" y="-1700.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <text>trans9</text>
-        <box w="60.0" h="40.0"/>
-        <binding x="5.0" y="5.0"/>
-        <cond id="ID1396">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </cond>
-        <time id="ID1397">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </time>
-        <code id="ID1177">
-          <posattr x="140.0" y="-1670.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">output( resp );
-action(
-  addEnergy( 5.34E~4 , 3.63673082017666E~8 );
-  addTime( 0.0075506667 , 7.4548891954023E~6 );
-  calcPower()
-);</text>
-        </code>
-        <channel id="ID1175">
-          <posattr x="0.0" y="0.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </channel>
-        <priority id="ID1398">
+        <priority id="ID1199">
           <posattr x="0.0" y="0.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
@@ -2119,305 +1454,15 @@ action(
         </annot>
       </arc>
 
-      <arc id="ID1197" orientation="TtoP" order="0">
+      <arc id="ID1031" orientation="TtoP" order="0">
         <posattr x="0.0" y="0.0"/>
         <fillattr colour="White" pattern="" filled="false"/>
         <lineattr colour="Black" thick="1" type="Solid"/>
         <textattr colour="Black" bold="false"/>
         <transend idref="ID1019"/>
-        <placeend idref="ID1028"/>
-        <annot id="ID1198">
+        <placeend idref="ID1026"/>
+        <annot id="ID1032">
           <posattr x="5.0" y="-150.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">i</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1040" orientation="PtoT" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1036"/>
-        <placeend idref="ID1028"/>
-        <annot id="ID1041">
-          <posattr x="5.0" y="-250.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">i</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1057" orientation="PtoT" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1053"/>
-        <placeend idref="ID1045"/>
-        <annot id="ID1058">
-          <posattr x="105.0" y="-650.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">i</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1074" orientation="PtoT" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1070"/>
-        <placeend idref="ID1062"/>
-        <annot id="ID1075">
-          <posattr x="5.0" y="-450.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">i</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1078" orientation="TtoP" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1036"/>
-        <placeend idref="ID1062"/>
-        <annot id="ID1079">
-          <posattr x="5.0" y="-350.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">i</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1082" orientation="TtoP" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1070"/>
-        <placeend idref="ID1045"/>
-        <bendpoint id="ID1084" serial="1">
-          <posattr x="0.0" y="-600.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </bendpoint>
-        <annot id="ID1083">
-          <posattr x="55.0" y="-550.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">if( n = 1 )
- then 1`i
- else empty</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1205" orientation="TtoP" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1070"/>
-        <placeend idref="ID1200"/>
-        <annot id="ID1206">
-          <posattr x="5.0" y="-1150.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">if n = 0
- then 1`i
- else empty</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1100" orientation="PtoT" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1096"/>
-        <placeend idref="ID1088"/>
-        <annot id="ID1101">
-          <posattr x="105.0" y="-850.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">i</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1121" orientation="TtoP" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1096"/>
-        <placeend idref="ID1105"/>
-        <annot id="ID1122">
-          <posattr x="105.0" y="-950.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">i</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1117" orientation="PtoT" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1113"/>
-        <placeend idref="ID1105"/>
-        <annot id="ID1118">
-          <posattr x="105.0" y="-1050.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">i</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1142" orientation="TtoP" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1113"/>
-        <placeend idref="ID1126"/>
-        <annot id="ID1143">
-          <posattr x="105.0" y="-1150.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">i</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1138" orientation="PtoT" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1134"/>
-        <placeend idref="ID1126"/>
-        <annot id="ID1139">
-          <posattr x="105.0" y="-1250.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">i</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1163" orientation="TtoP" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1134"/>
-        <placeend idref="ID1147"/>
-        <annot id="ID1164">
-          <posattr x="105.0" y="-1350.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">i</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1159" orientation="PtoT" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1155"/>
-        <placeend idref="ID1147"/>
-        <annot id="ID1160">
-          <posattr x="105.0" y="-1450.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">i</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1184" orientation="TtoP" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1155"/>
-        <placeend idref="ID1168"/>
-        <annot id="ID1185">
-          <posattr x="105.0" y="-1550.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">i</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1180" orientation="PtoT" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1176"/>
-        <placeend idref="ID1168"/>
-        <annot id="ID1181">
-          <posattr x="105.0" y="-1650.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">i</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1188" orientation="TtoP" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1053"/>
-        <placeend idref="ID1088"/>
-        <annot id="ID1189">
-          <posattr x="105.0" y="-750.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4">i</text>
-        </annot>
-      </arc>
-
-      <arc id="ID1192" orientation="TtoP" order="0">
-        <posattr x="0.0" y="0.0"/>
-        <fillattr colour="White" pattern="" filled="false"/>
-        <lineattr colour="Black" thick="1" type="Solid"/>
-        <textattr colour="Black" bold="false"/>
-        <transend idref="ID1096"/>
-        <placeend idref="ID1062"/>
-        <bendpoint id="ID1194" serial="1">
-          <posattr x="100.0" y="-400.0"/>
-          <fillattr colour="White" pattern="" filled="false"/>
-          <lineattr colour="Black" thick="1" type="Solid"/>
-          <textattr colour="Black" bold="false"/>
-          <text tool="CPN Tools" version="2.3.4"/>
-        </bendpoint>
-        <annot id="ID1193">
-          <posattr x="55.0" y="-650.0"/>
           <fillattr colour="White" pattern="" filled="false"/>
           <lineattr colour="Black" thick="1" type="Solid"/>
           <textattr colour="Black" bold="false"/>
@@ -2429,9 +1474,9 @@ action(
     <instances>
 
       <instance id="ID1006"
-                page="ID1278">
-        <instance id="ID1353" 
-                  trans="ID1207"/>
+                page="ID1103">
+        <instance id="ID1178" 
+                  trans="ID1033"/>
       </instance>
 
     </instances>
@@ -2662,12 +1707,12 @@ action(
                    type="1"
                    typedescription="Breakpoint"
                    disabled="false">
-            <node idref="ID1279"
+            <node idref="ID1104"
                   pageinstanceidref="ID1006"/>
 
             <declaration name="Predicate">
 
-        <ml id="ID1354">fun pred ( bindelem ) =
+        <ml id="ID1179">fun pred ( bindelem ) =
 (
   checkError()
 )

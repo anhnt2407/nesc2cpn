@@ -14,11 +14,8 @@ public class StartCPN extends SimpleCPN
 ;    
     public StartCPN( Place inPlace, Place outPlace , boolean function )
     {
-        //Place place = initPlace( pos.getX() - DISTANCE * 2 , pos.getY() + DISTANCE * 2 );
-        //place.setInitmark( new CPNItem("0") );
-        
-        init( inPlace , outPlace );
         this.isFunction = function;
+        init( inPlace , outPlace );
     }
 
     private void init( Place inPlace , Place outPlace )
