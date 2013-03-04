@@ -4,7 +4,8 @@ package br.cin.ufpe.nesc2cpn.translator.node;
  *
  * @author avld
  */
-public class ComposedNode extends TranslatorNode {
+public class ComposedNode extends TranslatorNode
+{
     private TranslatorNode blockNode;
     private double probability;
 

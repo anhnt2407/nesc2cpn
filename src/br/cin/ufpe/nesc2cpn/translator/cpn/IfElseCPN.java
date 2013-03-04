@@ -63,6 +63,11 @@ public class IfElseCPN extends ComposedCPN
         
         double total = node.getProbability();
 
+        if( total < 0 )
+        {
+            total = 0;
+        }
+        
         builder.append( "action\n" );
         builder.append( " let\n" );
         builder.append( "   val choice = uniform( 0.0 , 1.0 );\n" );
@@ -74,6 +79,11 @@ public class IfElseCPN extends ComposedCPN
             IfElseNode elseNode = (IfElseNode) node.getElseNode().get( i );
             total += elseNode.getProbability();
 
+            if( total < 0 )
+            {
+                total = 0;
+            }
+            
             builder.append( "   else if( choice < "+ total +" )" );
             builder.append( " then "+ (i + 1) +"\n" );
         }

@@ -51,6 +51,11 @@ public class WhileCPN extends ComposedCPN
     {
         double total = node.getProbability();
 
+        if( total < 0 )
+        {
+            total = 0;
+        }
+        
         StringBuilder builder = new StringBuilder();
         builder.append( "input(i);\n" );
         builder.append( "output(n);\n" );
@@ -58,7 +63,7 @@ public class WhileCPN extends ComposedCPN
         builder.append( " let\n" );
         builder.append( "   val choice = uniform( 0.0 , 1.0 );\n" );
         builder.append( " in\n" );
-        builder.append( "   if( choice < "+ total +" ) then 1\n" );
+        builder.append("   if( choice < ").append( total ).append( " ) then 1\n");
         builder.append( "   else 0\n" );
         builder.append( " end;" );
 

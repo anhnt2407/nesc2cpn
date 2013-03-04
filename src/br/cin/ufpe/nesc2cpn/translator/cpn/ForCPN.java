@@ -119,6 +119,11 @@ public class ForCPN extends ComposedCPN
     {
         int max = node.getInterationNumber();
 
+        if( max < 0 )
+        {
+            max = 0;
+        }
+        
         StringBuilder builder = new StringBuilder();
         builder.append( "input(i);\n" );
         builder.append( "output(n);\n" );
