@@ -1,7 +1,7 @@
 package br.cin.ufpe.nesc2cpn;
 
-import br.cin.ufpe.evaluateservice.EvaluateService;
-import br.cin.ufpe.evaluateservice.EvaluateServiceService;
+import br.cin.ufpe.evaluationservice.EvaluateService;
+import br.cin.ufpe.evaluationservice.EvaluateServiceService;
 import br.cin.ufpe.nesc2cpn.nescModule.Module;
 import br.cin.ufpe.nesc2cpn.nescModule.ProjectFile;
 import br.cin.ufpe.nesc2cpn.nescModule.instructions.Function;

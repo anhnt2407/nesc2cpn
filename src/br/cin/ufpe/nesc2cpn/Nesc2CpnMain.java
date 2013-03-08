@@ -18,7 +18,7 @@ public class Nesc2CpnMain
         //defaultConfiguration();
         //processParaments( args );
         Nesc2CpnProperties properties = ParameterFactory.getInstance().configuration( args );
-        //properties.setEvaluateServiceUrl( new URL( "http://localhost:8080/EvaluateService/ws?wsdl" ) );
+        //properties.setEvaluateServiceUrl( new URL( "http://localhost:8080/EvaluationService/ws?wsdl" ) );
 
         if( showRepositoryManager )
         {
@@ -47,7 +47,7 @@ public class Nesc2CpnMain
                            , "-keep"
                            //, "-output" , "/home/avld/Documentos/teste/"
                            //, "-output" , dir
-                           , "-onlycreator"
+                           //, "-onlycreator"
                            };
 
         //args = new String[]{ "-repositorymanager" };
